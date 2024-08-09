@@ -1,2 +1,2 @@
-# Template-for-Typescript-Projects
-A template repository for kickstarting the development of Typescript projects
+# Authentication Service
+LetsStreamIt platform authentication service

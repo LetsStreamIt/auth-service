@@ -1,9 +1,8 @@
 {
-  "name": "template-for-typescript-projects",
-  "description": "A template repository for kickstarting the development of Typescript projects",
+  "name": "auth-service",
+  "description": "LetsStreamIt platform authentication service",
   "keywords": [
-    "typescript",
-    "template"
+    "typescript"
   ],
   "author": {
     "name": "LetsStreamIt",
@@ -11,7 +10,7 @@
   },
   "repository": {
     "type": "git",
-    "url": "https://github.com/LetsStreamIt/Template-for-Typescript-Projects"
+    "url": "https://github.com/LetsStreamIt/auth-service"
   },
   "license": "MIT",
   "main": "dist/index.js",
