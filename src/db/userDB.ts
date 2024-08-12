@@ -3,6 +3,11 @@ import bcrypt from 'bcrypt'
 import { Either, Left, Right } from 'purify-ts/Either'
 import { MongoServerError } from 'mongodb'
 
+/**
+ * The possible errors that can occur when registering a user
+ * EmailAlreadyExists: The email already exists in the database
+ * Unexpected: An unexpected error occurred
+ */
 enum RegistrationError {
   EmailAlreadyExists,
   Unexpected
@@ -10,7 +15,13 @@ enum RegistrationError {
 
 const SALT_ROUNDS = 10
 
-// Define the register function using Either
+/**
+ * Registers a new user
+ * @param email The email of the user
+ * @param password The password of the user
+ * @param username The username of the user
+ * @returns Either an error or the user
+ */
 async function register(
   email: string,
   password: string,

@@ -1,13 +1,16 @@
 import { Request, Response } from 'express'
 import { register, RegistrationError } from '../db/userDB'
 
+/**
+ * Handles the registration of a new user
+ * @param req The request object
+ * @param res The response object
+ * @returns void
+ */
 async function handleRegistration(req: Request, res: Response) {
   const { email, password, username } = req.body
 
-  // Call the register function and wait for the Either result
   const result = await register(email, password, username)
-
-  // Handle the result as a standard Either
   result.caseOf({
     Left: (error) => {
       // Handle the error case
