@@ -3,6 +3,7 @@
 import express from 'express'
 import mongoose from 'mongoose'
 import dotenv from 'dotenv'
+import { handleRegistration } from './handlers/UserHandlers'
 
 dotenv.config()
 
@@ -22,6 +23,10 @@ app.get('/', (_req, res) => {
   res.send('Authentication Service')
 })
 
+app.post('/register', handleRegistration)
+
 app.listen(PORT, () => {
   console.log(`Server running on port ${PORT}`)
 })
+
+export default app
