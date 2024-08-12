@@ -12,5 +12,5 @@ const AccessTokenSchema: Schema = new Schema({
   userId: { type: String, required: true }
 })
 
-const AccessToken = mongoose.model<IAccessToken>('User', AccessTokenSchema)
+const AccessToken = mongoose.model<IAccessToken>('AccessToken', AccessTokenSchema)
 export default AccessToken
