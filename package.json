@@ -49,7 +49,7 @@
     "mocha": "^10.2.0",
     "nodemon": "^3.0.1",
     "prettier": "^3.2.5",
-    "semantic-release-preconfigured-conventional-commits": "1.1.95",
+    "semantic-release-preconfigured-conventional-commits": "1.1.96",
     "source-map-support": "^0.5.21",
     "ts-node": "^10.9.1",
     "typescript": "^5.5.4",
