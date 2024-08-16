@@ -38,3 +38,19 @@ export const validateToken = async (req: Request, res: Response) => {
     res.status(401).json({ message: 'Invalid access token' })
   }
 }
+
+export const getEmail = async (req: Request, res: Response) => {
+  const accessToken = req.headers['authorization']
+  if (!accessToken || typeof accessToken != 'string') {
+    res.status(400).json({ message: 'Access token not provided' })
+    return
+  }
+  try {
+    const decoded = jwt.verify(accessToken, process.env.JWT_SECRET as string) as {
+      data: string
+    }
+    res.status(200).json({ email: decoded.data })
+  } catch {
+    res.status(401).json({ message: 'Invalid access token' })
+  }
+}
