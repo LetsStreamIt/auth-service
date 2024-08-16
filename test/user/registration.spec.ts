@@ -17,18 +17,14 @@ describe('POST /api/auth/register', () => {
     // Send some Form Data
     const fakeUser = {
       email: 'test@example.com',
-      password: 'hashedpassword',
+      password: 'password123',
       username: 'testuser'
     }
 
     // Stub the User.create method to simulate successful registration
     sinon.stub(User, 'create').resolves(fakeUser as never)
 
-    const res = await chai.request(app).post('/api/auth/register').send({
-      email: 'test@example.com',
-      password: 'password123',
-      username: 'testuser'
-    })
+    const res = await chai.request(app).post('/api/auth/register').send(fakeUser)
 
     expect(res).to.have.status(201)
   })
