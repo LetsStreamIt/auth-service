@@ -23,3 +23,18 @@ export const refreshToken = async (req: Request, res: Response) => {
     res.status(401).json({ message: 'Invalid refresh token' })
   }
 }
+
+export const validateToken = async (req: Request, res: Response) => {
+  const { accessToken } = req.body
+  if (!accessToken) {
+    res.status(400).json({ message: 'Access token not provided' })
+    return
+  }
+
+  try {
+    jwt.verify(accessToken, process.env.JWT_SECRET as string)
+    res.status(200).json({ accessToken })
+  } catch {
+    res.status(401).json({ message: 'Invalid access token' })
+  }
+}
