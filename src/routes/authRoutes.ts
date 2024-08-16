@@ -1,5 +1,6 @@
 import express from 'express'
-import { registerUser, authUser, refreshToken } from '../controllers/authController'
+import { registerUser, authUser } from '../controllers/authController'
+import { refreshToken } from '../controllers/tokenController'
 
 const router = express.Router()
 
