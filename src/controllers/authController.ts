@@ -32,8 +32,7 @@ export const registerUser = async (req: Request, res: Response) => {
     } else {
       res.status(400).json({ message: 'Invalid user data' })
     }
-  } catch (error) {
-    console.error(error)
+  } catch {
     res.status(400).json({ message: 'Invalid user data' })
   }
 }
@@ -42,18 +41,22 @@ export const registerUser = async (req: Request, res: Response) => {
 export const authUser = async (req: Request, res: Response) => {
   const { email, password } = req.body
 
-  const user = await User.findOne({ email })
+  try {
+    const user = await User.findOne({ email })
 
-  if (user && (await user.matchPassword(password))) {
-    res.status(200).json({
-      _id: user._id,
-      email: user.email,
-      username: user.username,
-      accessToken: generateToken(user.email as string, '15m'),
-      refreshToken: generateToken(user.email as string, '24h')
-    })
-  } else {
-    res.status(401).json({ message: 'Invalid email or password' })
+    if (user && (await user.matchPassword(password))) {
+      res.status(200).json({
+        _id: user._id,
+        email: user.email,
+        username: user.username,
+        accessToken: generateToken(user.email as string, '15m'),
+        refreshToken: generateToken(user.email as string, '24h')
+      })
+    } else {
+      res.status(401).json({ message: 'Invalid email or password' })
+    }
+  } catch {
+    res.status(400).json({ message: 'Invalid login data' })
   }
 }
 
@@ -75,8 +78,7 @@ export const refreshToken = async (req: Request, res: Response) => {
     })
 
     res.json({ accessToken: newAccessToken })
-  } catch (error) {
-    console.log(error)
+  } catch {
     res.status(401).json({ message: 'Invalid refresh token' })
   }
 }
