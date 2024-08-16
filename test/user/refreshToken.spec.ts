@@ -24,7 +24,7 @@ describe('a POST to /api/auth/refresh', () => {
 
   it('should not grant a new token if a refresh token is not provided', async () => {
     const res = await chai.request(app).post('/api/auth/refresh')
-    expect(res).to.have.status(401)
+    expect(res).to.have.status(400)
   })
 
   it('should not grant a new token if the refresh token is not valid', async () => {

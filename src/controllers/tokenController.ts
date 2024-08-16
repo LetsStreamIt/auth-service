@@ -5,7 +5,7 @@ export const refreshToken = async (req: Request, res: Response) => {
   const { refreshToken } = req.body
 
   if (!refreshToken) {
-    res.status(401).json({ message: 'Refresh token not provided' })
+    res.status(400).json({ message: 'Refresh token not provided' })
     return
   }
 
