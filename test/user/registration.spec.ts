@@ -17,8 +17,7 @@ describe('POST /api/auth/register', () => {
     // Send some Form Data
     const fakeUser = {
       email: 'test@example.com',
-      password: 'password123',
-      username: 'testuser'
+      password: 'password123'
     }
 
     // Stub the User.create method to simulate successful registration
@@ -32,8 +31,7 @@ describe('POST /api/auth/register', () => {
   it('should return 400 when email already exists', async () => {
     const user = {
       email: 'existing@example.com',
-      password: 'password123',
-      username: 'existinguser'
+      password: 'password123'
     }
 
     // Stub the User.create method to simulate email already existing
@@ -50,8 +48,7 @@ describe('POST /api/auth/register', () => {
     sinon.stub(User, 'create').returns(undefined as never)
 
     const res = await chai.request(app).post('/api/auth/register').send({
-      email: 'unexpected@example.com',
-      username: 'unexpecteduser'
+      email: 'unexpected@example.com'
     })
 
     expect(res).to.have.status(400)

@@ -5,7 +5,7 @@ import jwt from 'jsonwebtoken'
 
 // Register a new user
 export const registerUser = async (req: Request, res: Response) => {
-  const { email, username, password } = req.body
+  const { email, password } = req.body
 
   const userExists = await User.findOne({ email })
 
@@ -17,7 +17,6 @@ export const registerUser = async (req: Request, res: Response) => {
   try {
     const user = await User.create({
       email,
-      username,
       password
     })
 
@@ -25,7 +24,6 @@ export const registerUser = async (req: Request, res: Response) => {
       res.status(201).json({
         _id: user._id,
         email: user.email,
-        username: user.username,
         accessToken: generateToken(user.email as string, '15m'),
         refreshToken: generateToken(user.email as string, '24h')
       })
@@ -48,7 +46,6 @@ export const authUser = async (req: Request, res: Response) => {
       res.status(200).json({
         _id: user._id,
         email: user.email,
-        username: user.username,
         accessToken: generateToken(user.email as string, '15m'),
         refreshToken: generateToken(user.email as string, '24h')
       })
