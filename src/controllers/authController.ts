@@ -26,8 +26,8 @@ export const registerUser = async (req: Request, res: Response) => {
         _id: user._id,
         email: user.email,
         username: user.username,
-        accessToken: generateToken(user._id as string, '15m'),
-        refreshToken: generateToken(user._id as string, '24h')
+        accessToken: generateToken(user.email as string, '15m'),
+        refreshToken: generateToken(user.email as string, '24h')
       })
     } else {
       res.status(400).json({ message: 'Invalid user data' })
@@ -45,12 +45,12 @@ export const authUser = async (req: Request, res: Response) => {
   const user = await User.findOne({ email })
 
   if (user && (await user.matchPassword(password))) {
-    res.json({
+    res.status(200).json({
       _id: user._id,
       email: user.email,
       username: user.username,
-      accessToken: generateToken(user._id as string, '15m'),
-      refreshToken: generateToken(user._id as string, '24h')
+      accessToken: generateToken(user.email as string, '15m'),
+      refreshToken: generateToken(user.email as string, '24h')
     })
   } else {
     res.status(401).json({ message: 'Invalid email or password' })
