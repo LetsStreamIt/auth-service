@@ -25,7 +25,6 @@ describe('a POST to /api/auth/login', () => {
     const hashedFakeUser = {
       ...fakeUser,
       password: hashedPwd,
-      username: '',
       matchPassword: function (): Promise<boolean> {
         return Promise.resolve(true)
       }
