@@ -20,6 +20,9 @@ describe('POST /api/auth/register', () => {
       password: 'password123'
     }
 
+    // Stub the User.findOne method to simulate a user with that email does not exist
+    sinon.stub(User, 'findOne').resolves(null)
+
     // Stub the User.create method to simulate successful registration
     sinon.stub(User, 'create').resolves(fakeUser as never)
 
@@ -44,6 +47,9 @@ describe('POST /api/auth/register', () => {
   })
 
   it('should return 400 when user data is wrong', async () => {
+    // Stub the User.findOne method to simulate a user with that email does not exist
+    sinon.stub(User, 'findOne').resolves(null)
+
     // Simulate an unexpected error
     sinon.stub(User, 'create').returns(undefined as never)
 
