@@ -1,11 +1,12 @@
 import jwt from 'jsonwebtoken'
+import { jwtSecret } from '../controllers/tokenController'
 
 const generateToken = (id: string, expiresIn: string) => {
   return jwt.sign(
     {
       data: id
     },
-    process.env.JWT_SECRET as string,
+    jwtSecret,
     {
       expiresIn
     }
