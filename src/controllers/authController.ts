@@ -20,11 +20,14 @@ export const registerUser = async (req: Request, res: Response) => {
     })
 
     if (user) {
+      const accessToken = generateToken(user.email as string, '15m')
+      const refreshToken = generateToken(user.email as string, '24h')
+      res.cookie('refreshToken', refreshToken, { httpOnly: true })
+      res.setHeader('Authorization', `Bearer ${accessToken}`)
+
       res.status(201).json({
         _id: user._id,
-        email: user.email,
-        accessToken: generateToken(user.email as string, '15m'),
-        refreshToken: generateToken(user.email as string, '24h')
+        email: user.email
       })
     } else {
       res.status(400).json({ message: 'Invalid user data' })
@@ -42,11 +45,14 @@ export const authUser = async (req: Request, res: Response) => {
     const user = await User.findOne({ email })
 
     if (user && (await user.matchPassword(password))) {
+      const accessToken = generateToken(user.email as string, '15m')
+      const refreshToken = generateToken(user.email as string, '24h')
+      res.cookie('refreshToken', refreshToken, { httpOnly: true })
+      res.setHeader('Authorization', `Bearer ${accessToken}`)
+
       res.status(200).json({
         _id: user._id,
-        email: user.email,
-        accessToken: generateToken(user.email as string, '15m'),
-        refreshToken: generateToken(user.email as string, '24h')
+        email: user.email
       })
     } else {
       res.status(401).json({ message: 'Invalid email or password' })
