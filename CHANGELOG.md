@@ -1,3 +1,9 @@
+## [0.3.0](https://github.com/LetsStreamIt/auth-service/compare/v0.2.2...v0.3.0) (2024-08-18)
+
+### Features
+
+* added refresh token to cookies ([fcc481a](https://github.com/LetsStreamIt/auth-service/commit/fcc481a743125b53d6f2657c0ad816ea77f73021))
+
 ## [0.2.2](https://github.com/LetsStreamIt/auth-service/compare/v0.2.1...v0.2.2) (2024-08-18)
 
 ### Bug Fixes
