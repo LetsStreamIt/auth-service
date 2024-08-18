@@ -14,25 +14,39 @@ describe('a POST to /api/auth/validate', () => {
 
   it('should check if a token is correct', async () => {
     const data = {
-      accessToken: 'a working access token'
+      accessToken: 'aWorkingAccessToken'
     }
     sinon.stub(jwt, 'verify').resolves({ email: 'test@example.com' })
 
-    const res = await chai.request(app).post('/api/auth/validate').send(data)
+    const res = await chai
+      .request(app)
+      .post('/api/auth/validate')
+      .set('authorization', `Bearer ${data.accessToken}`)
     expect(res).to.have.status(200)
 
     sinon.restore()
     const badData = {
-      accessToken: 'an invalid access token'
+      accessToken: 'anInvalidAccessToken'
     }
     sinon.stub(jwt, 'verify').throws(new Error())
 
-    const badRes = await chai.request(app).post('/api/auth/validate').send(badData)
+    const badRes = await chai
+      .request(app)
+      .post('/api/auth/validate')
+      .set('authorization', `Bearer ${badData.accessToken}`)
     expect(badRes).to.have.status(401)
   })
 
   it('should fail in a controlled manner if the access token is not provided', async () => {
     const res = await chai.request(app).post('/api/auth/refresh')
     expect(res).to.have.status(400)
+  })
+
+  it('should fail in a controlled manner if the wrong type of access token is provided', async () => {
+    const res = await chai
+      .request(app)
+      .post('/api/auth/validate')
+      .set('authorization', 'NotBearer token')
+    expect(res).to.have.status(401)
   })
 })
