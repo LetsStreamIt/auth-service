@@ -27,7 +27,14 @@ export const refreshToken = async (req: Request, res: Response) => {
 }
 
 export const validateToken = async (req: Request, res: Response) => {
-  const { accessToken } = req.body
+  const authHeader = req.headers.authorization
+
+  if (!authHeader || !authHeader.startsWith('Bearer ')) {
+    res.status(401).json({ message: 'Authorization header missing or malformed' })
+    return
+  }
+
+  const accessToken = authHeader.split(' ')[1]
   if (!accessToken) {
     res.status(400).json({ message: 'Access token not provided' })
     return
@@ -42,11 +49,14 @@ export const validateToken = async (req: Request, res: Response) => {
 }
 
 export const getEmail = async (req: Request, res: Response) => {
-  const accessToken = req.headers['authorization']
-  if (!accessToken || typeof accessToken != 'string') {
-    res.status(400).json({ message: 'Access token not provided' })
+  const authHeader = req.headers.authorization
+
+  if (!authHeader || !authHeader.startsWith('Bearer ')) {
+    res.status(401).json({ message: 'Authorization header missing or malformed' })
     return
   }
+
+  const accessToken = authHeader.split(' ')[1]
   try {
     const decoded = jwt.verify(accessToken, jwtSecret) as {
       data: string
