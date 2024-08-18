@@ -1,3 +1,16 @@
+## [0.2.2](https://github.com/LetsStreamIt/auth-service/compare/v0.2.1...v0.2.2) (2024-08-18)
+
+### Bug Fixes
+
+* fixed typescript target version ([0f02e07](https://github.com/LetsStreamIt/auth-service/commit/0f02e070458223f45ee6f60947626c364069cbd1))
+
+### Build and continuous integration
+
+* added release as docker image ([e28db64](https://github.com/LetsStreamIt/auth-service/commit/e28db64a83dc67d49ae206c7f94a35a20332de2f))
+* avoid running deploy image in pull requests ([c4a150f](https://github.com/LetsStreamIt/auth-service/commit/c4a150fdc1cfc335ace8e8a3f8e05bd04fb02cfe))
+* fixed success step ([946888d](https://github.com/LetsStreamIt/auth-service/commit/946888d7f7621f619cdf6de189440fd3878611d9))
+* removed linting step from build ([aab85b6](https://github.com/LetsStreamIt/auth-service/commit/aab85b687be3f8e137f74eaecdae51081aa1b12c))
+
 ## [0.2.1](https://github.com/LetsStreamIt/auth-service/compare/v0.2.0...v0.2.1) (2024-08-18)
 
 ### Dependency updates
