@@ -1,3 +1,13 @@
+## [0.2.1](https://github.com/LetsStreamIt/auth-service/compare/v0.2.0...v0.2.1) (2024-08-18)
+
+### Dependency updates
+
+* **deps:** update dependency mongoose to v8.5.3 ([1c9c650](https://github.com/LetsStreamIt/auth-service/commit/1c9c6508b4f28f662f0fd787d38e62dec0fff332))
+
+### Bug Fixes
+
+* get access token trough headers when validating ([1b6a20d](https://github.com/LetsStreamIt/auth-service/commit/1b6a20d426e79d59a0e738fd34d4e520ff812064))
+
 ## [0.2.0](https://github.com/LetsStreamIt/auth-service/compare/v0.1.0...v0.2.0) (2024-08-17)
 
 ### Features
