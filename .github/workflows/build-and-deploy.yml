@@ -57,6 +57,7 @@ jobs:
     runs-on: ubuntu-latest
     needs:
       - release
+    if: github.event_name != 'pull_request' # Skip during PRs
     steps:
       - name: Checkout repository
         uses: actions/checkout@v4
