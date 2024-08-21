@@ -1,3 +1,9 @@
+## [0.5.1](https://github.com/LetsStreamIt/auth-service/compare/v0.5.0...v0.5.1) (2024-08-21)
+
+### Bug Fixes
+
+* fixed cors origin settings ([d8443b3](https://github.com/LetsStreamIt/auth-service/commit/d8443b372234634e57ae6e635b94018f942cde03))
+
 ## [0.5.0](https://github.com/LetsStreamIt/auth-service/compare/v0.4.2...v0.5.0) (2024-08-21)
 
 ### Features
