@@ -1,10 +1,15 @@
 import { Request, Response } from 'express'
 import jwt from 'jsonwebtoken'
+import generateToken from '../utils/generateToken'
 
 export const jwtSecret = process.env.JWT_SECRET || 'testingsecret'
 
 export const refreshToken = async (req: Request, res: Response) => {
-  const { refreshToken } = req.body
+  if (!req.cookies) {
+    res.status(400).json({ message: 'Refresh token not provided' })
+    return
+  }
+  const refreshToken = req.cookies.refreshToken
 
   if (!refreshToken) {
     res.status(400).json({ message: 'Refresh token not provided' })
@@ -16,10 +21,7 @@ export const refreshToken = async (req: Request, res: Response) => {
     const decoded = jwt.verify(refreshToken, jwtSecret) as { data: string }
 
     // Issue a new access token
-    const newAccessToken = jwt.sign({ data: decoded.data }, jwtSecret, {
-      expiresIn: '15m'
-    })
-
+    const newAccessToken = generateToken(decoded.data, '15m')
     res.status(201).json({ accessToken: newAccessToken })
   } catch {
     res.status(401).json({ message: 'Invalid refresh token' })

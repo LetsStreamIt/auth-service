@@ -18,7 +18,10 @@ describe('a POST to /api/auth/refresh', () => {
     }
     sinon.stub(jwt, 'verify').resolves({ email: 'test@example.com' })
 
-    const res = await chai.request(app).post('/api/auth/refresh').send(data)
+    const res = await chai
+      .request(app)
+      .post('/api/auth/refresh')
+      .set('Cookie', `refreshToken=${data.refreshToken}`)
     expect(res).to.have.status(201)
   })
 
@@ -32,7 +35,10 @@ describe('a POST to /api/auth/refresh', () => {
       refreshToken: 'a broken refresh token'
     }
     sinon.stub(jwt, 'verify').throws(new Error())
-    const res = await chai.request(app).post('/api/auth/refresh').send(data)
+    const res = await chai
+      .request(app)
+      .post('/api/auth/refresh')
+      .set('Cookie', `refreshToken=${data.refreshToken}`)
     expect(res).to.have.status(401)
   })
 })
