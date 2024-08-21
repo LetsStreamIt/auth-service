@@ -23,11 +23,11 @@ export const registerUser = async (req: Request, res: Response) => {
       const accessToken = generateToken(user.email as string, '15m')
       const refreshToken = generateToken(user.email as string, '24h')
       res.cookie('refreshToken', refreshToken, { httpOnly: true })
-      res.setHeader('Authorization', `Bearer ${accessToken}`)
 
       res.status(201).json({
         _id: user._id,
-        email: user.email
+        email: user.email,
+        accessToken
       })
     } else {
       res.status(400).json({ message: 'Invalid user data' })
@@ -48,11 +48,11 @@ export const authUser = async (req: Request, res: Response) => {
       const accessToken = generateToken(user.email as string, '15m')
       const refreshToken = generateToken(user.email as string, '24h')
       res.cookie('refreshToken', refreshToken, { httpOnly: true })
-      res.setHeader('Authorization', `Bearer ${accessToken}`)
 
       res.status(200).json({
         _id: user._id,
-        email: user.email
+        email: user.email,
+        accessToken
       })
     } else {
       res.status(401).json({ message: 'Invalid email or password' })

@@ -20,8 +20,6 @@ export const refreshToken = async (req: Request, res: Response) => {
       expiresIn: '15m'
     })
 
-    res.setHeader('Authorization', `Bearer ${newAccessToken}`)
-
     res.status(201).json({ accessToken: newAccessToken })
   } catch {
     res.status(401).json({ message: 'Invalid refresh token' })
