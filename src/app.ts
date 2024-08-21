@@ -1,5 +1,7 @@
 import express from 'express'
 import bodyParser from 'body-parser'
+import cookieParser from 'cookie-parser'
+
 import dotenv from 'dotenv'
 import connectDB from './config/database'
 import authRoutes from './routes/authRoutes'
@@ -11,6 +13,7 @@ connectDB()
 const app = express()
 
 app.use(bodyParser.json())
+app.use(cookieParser())
 
 const corsOptions = {
   origin: 'http://localhost:5173',
