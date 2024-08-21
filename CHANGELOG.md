@@ -1,3 +1,14 @@
+## [0.5.0](https://github.com/LetsStreamIt/auth-service/compare/v0.4.2...v0.5.0) (2024-08-21)
+
+### Features
+
+* moved refresh token management to cookies ([41a9928](https://github.com/LetsStreamIt/auth-service/commit/41a9928f34ef251aa676a30371b120f65776680e))
+
+### Build and continuous integration
+
+* avoid running deploy image outside main branch ([f0c8faa](https://github.com/LetsStreamIt/auth-service/commit/f0c8faa9fd0256b9c8006f8efd90c4f8fc946092))
+* fix avoid running deploy image outside main branch ([786a692](https://github.com/LetsStreamIt/auth-service/commit/786a6929b67898d0565befa3d1b265543e340d14))
+
 ## [0.4.2](https://github.com/LetsStreamIt/auth-service/compare/v0.4.1...v0.4.2) (2024-08-21)
 
 ### Bug Fixes
