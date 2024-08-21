@@ -11,7 +11,13 @@ connectDB()
 const app = express()
 
 app.use(bodyParser.json())
-app.use(cors())
+
+const corsOptions = {
+  origin: 'http://localhost:5173',
+  credentials: true // Allow credentials (cookies, authorization headers, etc.)
+}
+
+app.use(cors(corsOptions))
 
 app.use('/api/auth', authRoutes)
 
