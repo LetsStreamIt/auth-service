@@ -1,3 +1,9 @@
+## [0.4.2](https://github.com/LetsStreamIt/auth-service/compare/v0.4.1...v0.4.2) (2024-08-21)
+
+### Bug Fixes
+
+* send accessToken inside body ([2208bcb](https://github.com/LetsStreamIt/auth-service/commit/2208bcbc09e4f90706c34947e1d877867f77945b))
+
 ## [0.4.1](https://github.com/LetsStreamIt/auth-service/compare/v0.4.0...v0.4.1) (2024-08-21)
 
 ### Bug Fixes
