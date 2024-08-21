@@ -1,3 +1,14 @@
+## [0.4.0](https://github.com/LetsStreamIt/auth-service/compare/v0.3.0...v0.4.0) (2024-08-21)
+
+### Features
+
+* added cors ([3e4eba3](https://github.com/LetsStreamIt/auth-service/commit/3e4eba3552a426d68e5bdc2173bb5891317c6125))
+
+### Dependency updates
+
+* **deps:** update dependency @types/node to v20.15.0 ([c21ba89](https://github.com/LetsStreamIt/auth-service/commit/c21ba898516b11ef04c09dcb12ea273aee9b4b60))
+* **deps:** update dependency semantic-release-preconfigured-conventional-commits to v1.1.97 ([b77c40c](https://github.com/LetsStreamIt/auth-service/commit/b77c40c9546364a7cb247ef479fdacfc180d39af))
+
 ## [0.3.0](https://github.com/LetsStreamIt/auth-service/compare/v0.2.2...v0.3.0) (2024-08-18)
 
 ### Features
