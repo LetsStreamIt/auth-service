@@ -3,6 +3,7 @@ import bodyParser from 'body-parser'
 import dotenv from 'dotenv'
 import connectDB from './config/database'
 import authRoutes from './routes/authRoutes'
+import cors from 'cors'
 
 dotenv.config()
 connectDB()
@@ -10,6 +11,7 @@ connectDB()
 const app = express()
 
 app.use(bodyParser.json())
+app.use(cors())
 
 app.use('/api/auth', authRoutes)
 
