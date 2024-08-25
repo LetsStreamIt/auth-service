@@ -1,3 +1,19 @@
+## [0.5.2](https://github.com/LetsStreamIt/auth-service/compare/v0.5.1...v0.5.2) (2024-08-25)
+
+### Dependency updates
+
+* **deps:** update dependency @types/node to v20.16.0 ([35e5e73](https://github.com/LetsStreamIt/auth-service/commit/35e5e73ba9189ff5cd4ca6ecc97c36d6129def68))
+* **deps:** update dependency @types/node to v20.16.1 ([5cc51cf](https://github.com/LetsStreamIt/auth-service/commit/5cc51cf98d63b5162f038b0732bce106b40f21fd))
+* **deps:** update dependency husky to v9.1.5 ([67a2b9d](https://github.com/LetsStreamIt/auth-service/commit/67a2b9dbad543fa0b6f35f4a4a7e354d828e0b87))
+* **deps:** update dependency semantic-release-preconfigured-conventional-commits to v1.1.98 ([27958e0](https://github.com/LetsStreamIt/auth-service/commit/27958e0761c55d2103cd3e58dfca955f577a2917))
+* **deps:** update dependency semantic-release-preconfigured-conventional-commits to v1.1.99 ([52297b5](https://github.com/LetsStreamIt/auth-service/commit/52297b5382f1cb1fb3c12f9e27e896d70a491d23))
+* **deps:** update node.js to 20.17 ([e8e06ee](https://github.com/LetsStreamIt/auth-service/commit/e8e06ee31e249d386070d6bd3314dc866ac2b0bd))
+* **deps:** update typescript-eslint monorepo to v8.2.0 ([f984f8c](https://github.com/LetsStreamIt/auth-service/commit/f984f8c6323db980b3c3a0df2f259127cbd4de89))
+
+### Bug Fixes
+
+* added refresh token inside login and registration data ([4081b03](https://github.com/LetsStreamIt/auth-service/commit/4081b03bd50a18d932491da327a930613025f5ac))
+
 ## [0.5.1](https://github.com/LetsStreamIt/auth-service/compare/v0.5.0...v0.5.1) (2024-08-21)
 
 ### Bug Fixes
