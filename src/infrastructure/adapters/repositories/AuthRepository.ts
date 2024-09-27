@@ -18,12 +18,12 @@ export class AuthRepository implements IAuthRepository {
     }
   }
   async findUserByEmail(email: string) {
-    return User.findOne({ email }).exec()
+    return User.findOne({ email })
   }
 
   async createUser(email: string, password: string) {
     const user = new User({ email, password })
-    return user.save()
+    return User.create(user)
   }
 
   async comparePasswords(storedPassword: string, enteredPassword: string) {

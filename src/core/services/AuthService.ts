@@ -1,4 +1,5 @@
 import { IAuthRepository } from '../interfaces/IAuthRepository'
+import { CodedError } from '../models/ICodedError'
 import { IAuthService } from './IAuthService'
 
 export class AuthService implements IAuthService {
@@ -11,7 +12,7 @@ export class AuthService implements IAuthService {
   async registerUser(email: string, password: string) {
     const existingUser = await this.authRepository.findUserByEmail(email)
     if (existingUser) {
-      throw new Error('User already exists')
+      throw new CodedError(400, 'User already exists')
     }
 
     return this.authRepository.createUser(email, password)
@@ -20,12 +21,12 @@ export class AuthService implements IAuthService {
   async loginUser(email: string, password: string) {
     const user = await this.authRepository.findUserByEmail(email)
     if (!user) {
-      throw new Error('Invalid email or password')
+      throw new CodedError(401, 'Invalid email or password')
     }
 
     const isPasswordValid = await this.authRepository.comparePasswords(user.password, password)
     if (!isPasswordValid) {
-      throw new Error('Invalid email or password')
+      throw new CodedError(401, 'Invalid email or password')
     }
 
     return user

@@ -3,6 +3,7 @@ import chaiHttp from 'chai-http'
 import sinon from 'sinon'
 import app from '../../src/app'
 import { User } from '../../src/core/models/User'
+import mongoose from 'mongoose'
 
 // Middleware to use chai-http
 const chai = chaiModule.use(chaiHttp)
@@ -11,6 +12,7 @@ describe('POST /api/auth/register', () => {
   beforeEach(() => {
     // Reset the stubs before each test
     sinon.restore()
+    sinon.stub(mongoose, 'connect').resolves()
   })
 
   it('should register a new user successfully', async () => {
