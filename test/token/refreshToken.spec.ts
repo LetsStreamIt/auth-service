@@ -23,6 +23,7 @@ describe('a POST to /api/auth/refresh', () => {
       .post('/api/auth/refresh')
       .set('Cookie', `refreshToken=${data.refreshToken}`)
     expect(res).to.have.status(201)
+    expect(res.body).to.have.property('accessToken')
   })
 
   it('should not grant a new token if a refresh token is not provided', async () => {
@@ -40,5 +41,7 @@ describe('a POST to /api/auth/refresh', () => {
       .post('/api/auth/refresh')
       .set('Cookie', `refreshToken=${data.refreshToken}`)
     expect(res).to.have.status(401)
+    expect(res.body.message).to.equal('Invalid refresh token')
+    expect(res.body).to.not.have.property('accessToken')
   })
 })

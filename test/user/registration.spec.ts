@@ -31,6 +31,11 @@ describe('POST /api/auth/register', () => {
     const res = await chai.request(app).post('/api/auth/register').send(fakeUser)
 
     expect(res).to.have.status(201)
+    expect(res.body).to.have.property('accessToken')
+    expect(res.body).to.have.property('refreshToken')
+    expect(res.body).to.have.property('email')
+    expect(res.body.email).to.equal(fakeUser.email)
+    expect(res.body).to.not.have.property('password')
   })
 
   it('should return 400 when email already exists', async () => {
@@ -46,6 +51,7 @@ describe('POST /api/auth/register', () => {
 
     expect(res).to.have.status(400)
     expect(res.body.message).to.equal('User already exists')
+    expect(res.body).to.not.have.property('accessToken')
   })
 
   it('should return 400 when user data is wrong', async () => {
@@ -61,5 +67,6 @@ describe('POST /api/auth/register', () => {
 
     expect(res).to.have.status(400)
     expect(res.body.message).to.equal('Invalid user data')
+    expect(res.body).to.not.have.property('accessToken')
   })
 })

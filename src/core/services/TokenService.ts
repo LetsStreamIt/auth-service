@@ -1,7 +1,7 @@
 import jwt from 'jsonwebtoken'
-import generateToken from '../../utils/generateToken'
 import { ITokenService } from './ITokenService'
-import { CodedError } from '../models/ICodedError'
+import { CodedError } from '../models/CodedError'
+import { TokenData } from '../models/TokenData'
 
 export class TokenService implements ITokenService {
   private jwtSecret: string
@@ -12,14 +12,14 @@ export class TokenService implements ITokenService {
 
   async refreshToken(refreshToken: string) {
     if (!refreshToken) {
-      throw new CodedError(400, 'Refresh token not provided')
+      throw new CodedError(400, 'Authorization header missing or malformed')
     }
     try {
       // Verify the refresh token
-      const decoded = jwt.verify(refreshToken, this.jwtSecret) as { data: string }
+      const decoded = jwt.verify(refreshToken, this.jwtSecret) as { data: TokenData }
 
       // Issue a new access token
-      const newAccessToken = generateToken(this.jwtSecret, decoded.data, '15m')
+      const newAccessToken = this.generateToken(decoded.data, '15m')
       return newAccessToken
     } catch {
       throw new CodedError(401, 'Invalid refresh token')
@@ -45,12 +45,15 @@ export class TokenService implements ITokenService {
     }
 
     try {
-      // TODO: Data should be modelled inside core/models
-      const decoded = jwt.verify(accessToken, this.jwtSecret) as { data: string }
+      const decoded = jwt.verify(accessToken, this.jwtSecret) as { data: TokenData }
 
       return decoded.data
     } catch {
       throw new CodedError(401, 'Invalid access token')
     }
+  }
+
+  generateToken(data: TokenData, expiresIn: string): string {
+    return jwt.sign({ data }, this.jwtSecret, { expiresIn })
   }
 }

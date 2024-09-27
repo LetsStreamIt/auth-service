@@ -1,13 +1,21 @@
 import { Router } from 'express'
-import { registerUser, loginUser } from '../controllers/AuthController'
-import { getData, refreshToken, validateToken } from '../controllers/TokenController'
+import { AuthController } from '../controllers/AuthController'
+import { TokenService } from '../../core/services/TokenService'
+import { TokenUseCase } from '../../application/usecases/TokenUseCase'
+import { TokenController } from '../controllers/TokenController'
 
 const router = Router()
 
-router.post('/register', registerUser)
-router.post('/login', loginUser)
-router.post('/refresh', refreshToken)
-router.post('/validate', validateToken)
-router.get('/data', getData)
+const tokenService = new TokenService()
+const tokenUseCase = new TokenUseCase(tokenService)
+const tokenController = new TokenController(tokenUseCase)
+
+const authController = new AuthController(tokenUseCase)
+
+router.post('/register', authController.registerUser)
+router.post('/login', authController.loginUser)
+router.post('/refresh', tokenController.refreshToken)
+router.post('/validate', tokenController.validateToken)
+router.get('/data', tokenController.getData)
 
 export default router
