@@ -2,7 +2,7 @@ import chaiModule, { expect } from 'chai'
 import chaiHttp from 'chai-http'
 import sinon from 'sinon'
 import app from '../../src/app'
-import User from '../../src/models/user'
+import { User } from '../../src/core/models/User'
 
 // Middleware to use chai-http
 const chai = chaiModule.use(chaiHttp)
