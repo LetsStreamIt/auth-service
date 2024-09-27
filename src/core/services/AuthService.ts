@@ -1,5 +1,5 @@
 import { IAuthRepository } from '../interfaces/IAuthRepository'
-import { CodedError } from '../models/ICodedError'
+import { CodedError } from '../models/CodedError'
 import { IAuthService } from './IAuthService'
 
 export class AuthService implements IAuthService {
@@ -21,12 +21,12 @@ export class AuthService implements IAuthService {
   async loginUser(email: string, password: string) {
     const user = await this.authRepository.findUserByEmail(email)
     if (!user) {
-      throw new CodedError(401, 'Invalid email or password')
+      throw new CodedError(401, 'Invalid credentials')
     }
 
     const isPasswordValid = await this.authRepository.comparePasswords(user.password, password)
     if (!isPasswordValid) {
-      throw new CodedError(401, 'Invalid email or password')
+      throw new CodedError(401, 'Invalid credentials')
     }
 
     return user

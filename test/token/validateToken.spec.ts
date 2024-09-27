@@ -23,6 +23,7 @@ describe('a POST to /api/auth/validate', () => {
       .post('/api/auth/validate')
       .set('authorization', `Bearer ${data.accessToken}`)
     expect(res).to.have.status(200)
+    expect(res.body).to.have.property('accessToken')
 
     sinon.restore()
     const badData = {
@@ -35,11 +36,15 @@ describe('a POST to /api/auth/validate', () => {
       .post('/api/auth/validate')
       .set('authorization', `Bearer ${badData.accessToken}`)
     expect(badRes).to.have.status(401)
+    expect(badRes.body.message).to.equal('Invalid access token')
+    expect(badRes.body).to.not.have.property('accessToken')
   })
 
   it('should fail in a controlled manner if the access token is not provided', async () => {
     const res = await chai.request(app).post('/api/auth/refresh')
     expect(res).to.have.status(400)
+    expect(res.body.message).to.equal('Authorization header missing or malformed')
+    expect(res.body).to.not.have.property('accessToken')
   })
 
   it('should fail in a controlled manner if the wrong type of access token is provided', async () => {
@@ -48,5 +53,7 @@ describe('a POST to /api/auth/validate', () => {
       .post('/api/auth/validate')
       .set('authorization', 'NotBearer token')
     expect(res).to.have.status(401)
+    expect(res.body.message).to.equal('Authorization header missing or malformed')
+    expect(res.body).to.not.have.property('accessToken')
   })
 })

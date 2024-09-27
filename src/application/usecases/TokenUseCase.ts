@@ -1,3 +1,4 @@
+import { TokenData } from '../../core/models/TokenData'
 import { ITokenService } from '../../core/services/ITokenService'
 
 export class TokenUseCase {
@@ -17,5 +18,9 @@ export class TokenUseCase {
 
   async getData(accessToken: string) {
     return await this.tokenService.getData(accessToken)
+  }
+
+  async generate(data: TokenData, expiresIn: string) {
+    return this.tokenService.generateToken(data, expiresIn)
   }
 }
