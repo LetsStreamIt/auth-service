@@ -4,6 +4,7 @@ import sinon from 'sinon'
 import app from '../../src/app'
 import { User } from '../../src/core/models/User'
 import bcrypt from 'bcrypt'
+import mongoose from 'mongoose'
 
 // Middleware to use chai-http
 const chai = chaiModule.use(chaiHttp)
@@ -11,6 +12,7 @@ const chai = chaiModule.use(chaiHttp)
 describe('a POST to /api/auth/login', () => {
   beforeEach(() => {
     sinon.restore()
+    sinon.stub(mongoose, 'connect').resolves()
   })
 
   it('should allow an existing user to login', async () => {
@@ -25,9 +27,7 @@ describe('a POST to /api/auth/login', () => {
     const hashedFakeUser = {
       ...fakeUser,
       password: hashedPwd,
-      matchPassword: function (): Promise<boolean> {
-        return Promise.resolve(true)
-      }
+      matchPassword: sinon.stub().resolves(true)
     }
     sinon.stub(User, 'findOne').resolves(hashedFakeUser)
 
