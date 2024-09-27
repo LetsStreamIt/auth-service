@@ -1,7 +1,6 @@
 import jwt from 'jsonwebtoken'
-import { jwtSecret } from '../controllers/tokenController'
 
-const generateToken = (id: string, expiresIn: string) => {
+const generateToken = (jwtSecret: string, id: string, expiresIn: string) => {
   return jwt.sign(
     {
       data: id

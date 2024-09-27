@@ -3,12 +3,10 @@ import bodyParser from 'body-parser'
 import cookieParser from 'cookie-parser'
 
 import dotenv from 'dotenv'
-import connectDB from './config/database'
-import authRoutes from './routes/authRoutes'
 import cors from 'cors'
+import router from './infrastructure/routes/AuthRoutes'
 
 dotenv.config()
-connectDB()
 
 const app = express()
 
@@ -22,7 +20,7 @@ const corsOptions = {
 
 app.use(cors(corsOptions))
 
-app.use('/api/auth', authRoutes)
+app.use('/api/auth', router)
 
 app.use((_req, res, next) => {
   const error = new Error('Not Found')
@@ -30,12 +28,10 @@ app.use((_req, res, next) => {
   next(error)
 })
 
-app.use(
-  (error: Error, _req: express.Request, res: express.Response, _next: express.NextFunction) => {
-    res.status(res.statusCode || 500).json({
-      message: error.message
-    })
-  }
-)
+app.use((error: Error, _req: express.Request, res: express.Response) => {
+  res.status(res.statusCode || 500).json({
+    message: error.message
+  })
+})
 
 export default app
