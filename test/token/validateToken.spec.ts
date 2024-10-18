@@ -41,8 +41,8 @@ describe('a POST to /api/auth/validate', () => {
   })
 
   it('should fail in a controlled manner if the access token is not provided', async () => {
-    const res = await chai.request(app).post('/api/auth/refresh')
-    expect(res).to.have.status(400)
+    const res = await chai.request(app).post('/api/auth/validate')
+    expect(res).to.have.status(401)
     expect(res.body.message).to.equal('Authorization header missing or malformed')
     expect(res.body).to.not.have.property('accessToken')
   })
