@@ -12,7 +12,7 @@ export class TokenService implements ITokenService {
 
   async refreshToken(refreshToken: string) {
     if (!refreshToken) {
-      throw new CodedError(400, 'Authorization header missing or malformed')
+      throw new CodedError(400, 'Token not provided')
     }
     try {
       // Verify the refresh token
