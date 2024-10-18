@@ -32,8 +32,9 @@ export class AuthController {
     try {
       const user = await this.authUseCase.register(email, password)
       const data = new TokenData(user.id, email)
-      const accessToken = this.tokenUseCase.generate(data, '15m')
-      const refreshToken = this.tokenUseCase.generate(data, '1h')
+      const accessToken = await this.tokenUseCase.generate(data, '15m')
+      const refreshToken = await this.tokenUseCase.generate(data, '1h')
+      console.log(accessToken, refreshToken)
       res.status(201).json({ ...data, accessToken, refreshToken })
     } catch (error) {
       if (error instanceof CodedError) {
@@ -53,8 +54,9 @@ export class AuthController {
     try {
       const user = await this.authUseCase.login(email, password)
       const data = new TokenData(user.id, email)
-      const accessToken = this.tokenUseCase.generate(data, '15m')
-      const refreshToken = this.tokenUseCase.generate(data, '1h')
+      const accessToken = await this.tokenUseCase.generate(data, '15m')
+      const refreshToken = await this.tokenUseCase.generate(data, '1h')
+      console.log(accessToken, refreshToken)
       res.status(200).json({ ...data, accessToken, refreshToken })
     } catch (error) {
       if (error instanceof CodedError) {
