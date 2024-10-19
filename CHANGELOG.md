@@ -1,3 +1,9 @@
+## [0.5.5](https://github.com/LetsStreamIt/auth-service/compare/v0.5.4...v0.5.5) (2024-10-19)
+
+### Bug Fixes
+
+* added back refresh token to cookies ([935777d](https://github.com/LetsStreamIt/auth-service/commit/935777dfbb3f5f1af77c36f80fa4e63591a29745))
+
 ## [0.5.4](https://github.com/LetsStreamIt/auth-service/compare/v0.5.3...v0.5.4) (2024-10-19)
 
 ### Dependency updates
