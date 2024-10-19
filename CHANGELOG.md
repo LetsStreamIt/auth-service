@@ -1,3 +1,51 @@
+## [0.5.4](https://github.com/LetsStreamIt/auth-service/compare/v0.5.3...v0.5.4) (2024-10-19)
+
+### Dependency updates
+
+* **deps:** update dependency @types/chai to v4.3.20 ([9486870](https://github.com/LetsStreamIt/auth-service/commit/94868709190b82a7ac7c15ed66a1e3eef446d82e))
+* **deps:** update dependency @types/express to v5 ([6648615](https://github.com/LetsStreamIt/auth-service/commit/664861539a9bab6e491744673aa0f9f4b18dc901))
+* **deps:** update dependency @types/mocha to v10.0.9 ([a6afb01](https://github.com/LetsStreamIt/auth-service/commit/a6afb01b953fe9dcbf339bdbd395a367cf455d7a))
+* **deps:** update dependency @types/node to v20.16.10 ([edd095b](https://github.com/LetsStreamIt/auth-service/commit/edd095b8e6a1c8ccfbb31b5a72e2b1481b7fa849))
+* **deps:** update dependency @types/node to v20.16.11 ([6a51f82](https://github.com/LetsStreamIt/auth-service/commit/6a51f8217bed2f19ead3a086647dc806556c2e92))
+* **deps:** update dependency @types/node to v20.16.7 ([8723854](https://github.com/LetsStreamIt/auth-service/commit/87238540b6f2a505a3a3776f790bc5bed9d4c276))
+* **deps:** update dependency @types/node to v20.16.9 ([b3eb246](https://github.com/LetsStreamIt/auth-service/commit/b3eb2463aa53018d4f31d7cc037992e24127dd65))
+* **deps:** update dependency @vue/eslint-config-prettier to v10 ([39a2237](https://github.com/LetsStreamIt/auth-service/commit/39a22377d7f3cae542712dfbbc5ff234e3c4b88c))
+* **deps:** update dependency cookie-parser to v1.4.7 ([e1bf2c3](https://github.com/LetsStreamIt/auth-service/commit/e1bf2c36c077854d9e9ccfbb430163ecb3f53b28))
+* **deps:** update dependency express to v4.21.1 ([314745e](https://github.com/LetsStreamIt/auth-service/commit/314745e77469c4e6baa2ac07df9467459a9d2df3))
+* **deps:** update dependency mongoose to v8.6.4 ([820cdd1](https://github.com/LetsStreamIt/auth-service/commit/820cdd1db6a002246c1714396b348f892ab565c8))
+* **deps:** update dependency mongoose to v8.7.0 ([3ce116b](https://github.com/LetsStreamIt/auth-service/commit/3ce116b6602e9d627bb5bbf3193dfceedb62757c))
+* **deps:** update dependency mongoose to v8.7.1 ([36883d6](https://github.com/LetsStreamIt/auth-service/commit/36883d6ca6a7caf31aba3f50b0105c88a64cdf80))
+* **deps:** update dependency semantic-release-preconfigured-conventional-commits to v1.1.109 ([3106fe1](https://github.com/LetsStreamIt/auth-service/commit/3106fe127b527d69ae09d329254435b872b33192))
+* **deps:** update dependency semantic-release-preconfigured-conventional-commits to v1.1.110 ([36fe95f](https://github.com/LetsStreamIt/auth-service/commit/36fe95f7732c02982a1abbab9841b2d242c8d630))
+* **deps:** update dependency semantic-release-preconfigured-conventional-commits to v1.1.111 ([b096194](https://github.com/LetsStreamIt/auth-service/commit/b096194b1660d56a5507c369bc6761e864bc2404))
+* **deps:** update dependency typescript to v5.6.3 ([479ef4e](https://github.com/LetsStreamIt/auth-service/commit/479ef4eab5bee28ffa0832c9ed7f75b1f4b5eca5))
+* **deps:** update eslint monorepo to v9.12.0 ([23e7910](https://github.com/LetsStreamIt/auth-service/commit/23e7910858e0beef91272727f3400eef3cb95bd5))
+* **deps:** update node.js to 20.18 ([761ee0a](https://github.com/LetsStreamIt/auth-service/commit/761ee0a4658ff3b2116ca81f8a2e89c8a771f3ed))
+* **deps:** update typescript-eslint monorepo to v8.8.0 ([c8d4b7a](https://github.com/LetsStreamIt/auth-service/commit/c8d4b7aab0a4c96460a123bc7b182889f99f54ae))
+* **deps:** update typescript-eslint monorepo to v8.8.1 ([50a46f1](https://github.com/LetsStreamIt/auth-service/commit/50a46f14bffb4b834056d03be7ca3b47d5766f31))
+* **deps:** update typescript-eslint monorepo to v8.9.0 ([5c28034](https://github.com/LetsStreamIt/auth-service/commit/5c28034fbe5edfe9a362010ec92a17914fa43598))
+
+### Bug Fixes
+
+* forgot about the await for token creation ([367ddae](https://github.com/LetsStreamIt/auth-service/commit/367ddae1e93a0b489e6235ce56b7c912b8459e34))
+
+### Tests
+
+* fixed validation test calling refresh api ([7be41f1](https://github.com/LetsStreamIt/auth-service/commit/7be41f1e044ec8d03c14288affad9a4a9118e83a))
+
+### Build and continuous integration
+
+* **deps:** update actions/checkout action to v4.2.1 ([6cc3b0f](https://github.com/LetsStreamIt/auth-service/commit/6cc3b0f80b2f78455abb95ec40d682d112c5d972))
+* **deps:** update danysk/action-checkout action to v0.2.21 ([1e327b9](https://github.com/LetsStreamIt/auth-service/commit/1e327b9abc145ce53c4bc6b4405c6f5c1e3d25e4))
+* **deps:** update docker/build-push-action digest to 4f58ea7 ([1ac8b32](https://github.com/LetsStreamIt/auth-service/commit/1ac8b32757eed6c01a8ebe9fd737f75d6990f785))
+* **deps:** update docker/build-push-action digest to e44afff ([e8aeabf](https://github.com/LetsStreamIt/auth-service/commit/e8aeabf942d50ea67095e070c282c1a7aab3eae5))
+* **deps:** update docker/login-action digest to 1f36f5b ([a316c9c](https://github.com/LetsStreamIt/auth-service/commit/a316c9c27ebb628de5ea187a59e8b1ad686bcf6f))
+* **deps:** update docker/login-action digest to 29df2a9 ([93a7f11](https://github.com/LetsStreamIt/auth-service/commit/93a7f11e8da35a57b1d9a96c70594cf65a922bbf))
+
+### General maintenance
+
+* changed error message ([d6a7b21](https://github.com/LetsStreamIt/auth-service/commit/d6a7b212a6f3715971066dc54871adb3ae86ba4b))
+
 ## [0.5.3](https://github.com/LetsStreamIt/auth-service/compare/v0.5.2...v0.5.3) (2024-09-27)
 
 ### Dependency updates
