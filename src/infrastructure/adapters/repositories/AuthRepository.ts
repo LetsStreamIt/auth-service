@@ -29,4 +29,8 @@ export class AuthRepository implements IAuthRepository {
   async comparePasswords(storedPassword: string, enteredPassword: string) {
     return bcrypt.compare(enteredPassword, storedPassword)
   }
+
+  async deleteUser(email: string) {
+    return User.deleteOne({ email })
+  }
 }

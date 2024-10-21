@@ -4,6 +4,7 @@ import sinon from 'sinon'
 import app from '../../src/app'
 import { User } from '../../src/core/models/User'
 import mongoose from 'mongoose'
+import { ProfileRepository } from '../../src/infrastructure/adapters/repositories/ProfileRepository'
 
 // Middleware to use chai-http
 const chai = chaiModule.use(chaiHttp)
@@ -19,7 +20,8 @@ describe('POST /api/auth/register', () => {
     // Send some Form Data
     const fakeUser = {
       email: 'test@example.com',
-      password: 'password123'
+      password: 'password123',
+      username: 'testuser'
     }
 
     // Stub the User.findOne method to simulate a user with that email does not exist
@@ -27,6 +29,8 @@ describe('POST /api/auth/register', () => {
 
     // Stub the User.create method to simulate successful registration
     sinon.stub(User, 'create').resolves(fakeUser as never)
+
+    sinon.stub(ProfileRepository.prototype, 'createUserProfile').resolves()
 
     const res = await chai.request(app).post('/api/auth/register').send(fakeUser)
 
@@ -41,7 +45,8 @@ describe('POST /api/auth/register', () => {
   it('should return 400 when email already exists', async () => {
     const user = {
       email: 'existing@example.com',
-      password: 'password123'
+      password: 'password123',
+      username: 'existinguser'
     }
 
     // Stub the User.create method to simulate email already existing
