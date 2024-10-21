@@ -31,4 +31,7 @@ export class AuthService implements IAuthService {
 
     return user
   }
+  async deleteUser(email: string) {
+    return this.authRepository.deleteUser(email)
+  }
 }

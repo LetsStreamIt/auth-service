@@ -5,34 +5,38 @@ import { AuthService } from '../../core/services/AuthService'
 import { Error } from 'mongoose'
 import { CodedError } from '../../core/models/CodedError'
 import { TokenUseCase } from '../../application/usecases/TokenUseCase'
-import { IAuthRepository } from '../../core/interfaces/IAuthRepository'
-import { IAuthService } from '../../core/services/IAuthService'
 import { TokenData } from '../../core/models/TokenData'
+import { ProfileRepository } from '../adapters/repositories/ProfileRepository'
+import { ProfileService } from '../../core/services/ProfileService'
+import { ProfileUseCase } from '../../application/usecases/ProfileUseCase'
 
 export class AuthController {
   // Instantiate use case with repository and service
-  private authRepository: IAuthRepository
-  private authService: IAuthService
   private authUseCase: AuthUseCase
   private tokenUseCase: TokenUseCase
+  private profileUseCase: ProfileUseCase
 
   constructor(tokenUseCase: TokenUseCase) {
-    this.authRepository = new AuthRepository()
-    this.authService = new AuthService(this.authRepository)
-    this.authUseCase = new AuthUseCase(this.authService)
+    const authRepository = new AuthRepository()
+    const authService = new AuthService(authRepository)
+    this.authUseCase = new AuthUseCase(authService)
     this.tokenUseCase = tokenUseCase
+    this.profileUseCase = new ProfileUseCase(
+      new ProfileService(new ProfileRepository(this.authUseCase))
+    )
   }
 
   // Register
   registerUser = async (req: Request, res: Response) => {
-    const { email, password } = req.body
-    if (!email || !password) {
+    const { email, password, username } = req.body
+    if (!email || !password || !username) {
       res.status(400).json({ message: 'Invalid user data' })
     }
     try {
       const user = await this.authUseCase.register(email, password)
       const data = new TokenData(user.id, email)
       const accessToken = await this.tokenUseCase.generate(data, '15m')
+      this.profileUseCase.createUserProfile(email, username, accessToken)
       const refreshToken = await this.tokenUseCase.generate(data, '24h')
       res.cookie('refreshToken', refreshToken, { httpOnly: true })
       res.status(201).json({ ...data, accessToken, refreshToken })
