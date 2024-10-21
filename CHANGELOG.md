@@ -1,3 +1,15 @@
+## [0.6.0](https://github.com/LetsStreamIt/auth-service/compare/v0.5.5...v0.6.0) (2024-10-21)
+
+### Features
+
+* implemented profile creation during registration ([0549321](https://github.com/LetsStreamIt/auth-service/commit/0549321e9dcaa664edbefd260f86eadb204ab28c))
+
+### Dependency updates
+
+* **deps:** update dependency @types/node to v20.16.12 ([aa8398f](https://github.com/LetsStreamIt/auth-service/commit/aa8398f8a3252789a2df4b15e52bee17923a3775))
+* **deps:** update dependency mongoose to v8.7.2 ([e19c14d](https://github.com/LetsStreamIt/auth-service/commit/e19c14d43a41c3334100cd25d96a974e9593e38e))
+* **deps:** update typescript-eslint monorepo to v8.10.0 ([443efdc](https://github.com/LetsStreamIt/auth-service/commit/443efdcbe5a7f9715520a92e1c32f2274b8e8953))
+
 ## [0.5.5](https://github.com/LetsStreamIt/auth-service/compare/v0.5.4...v0.5.5) (2024-10-19)
 
 ### Bug Fixes
