@@ -3,6 +3,11 @@ import { IAuthRepository } from '../../../core/interfaces/IAuthRepository'
 import bcrypt from 'bcrypt'
 import mongoose from 'mongoose'
 
+/**
+ * AuthRepository
+ * This class is responsible for handling all the database operations related to the user.
+ * It implements the IAuthRepository interface.
+ */
 export class AuthRepository implements IAuthRepository {
   constructor() {
     const mongoUri = process.env.MONGO_URI || 'mongodb://localhost:27017'

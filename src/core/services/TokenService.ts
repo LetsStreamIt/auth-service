@@ -3,6 +3,10 @@ import { ITokenService } from './ITokenService'
 import { CodedError } from '../models/CodedError'
 import { TokenData } from '../models/TokenData'
 
+/**
+ * Token service
+ * Implements the ITokenService interface
+ */
 export class TokenService implements ITokenService {
   private jwtSecret: string
 

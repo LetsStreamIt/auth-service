@@ -10,12 +10,21 @@ import { ProfileRepository } from '../adapters/repositories/ProfileRepository'
 import { ProfileService } from '../../core/services/ProfileService'
 import { ProfileUseCase } from '../../application/usecases/ProfileUseCase'
 
+/**
+ * AuthController class
+ * This class is responsible for handling the authentication routes
+ * in the API.
+ */
 export class AuthController {
   // Instantiate use case with repository and service
   private authUseCase: AuthUseCase
   private tokenUseCase: TokenUseCase
   private profileUseCase: ProfileUseCase
 
+  /**
+   * Constructor
+   * @param {TokenUseCase} tokenUseCase - The token use case
+   */
   constructor(tokenUseCase: TokenUseCase) {
     const authRepository = new AuthRepository()
     const authService = new AuthService(authRepository)
@@ -26,7 +35,12 @@ export class AuthController {
     )
   }
 
-  // Register
+  /**
+   * Register a new user
+   * @param {Request} req - The request object
+   * @param {Response} res - The response object
+   * @returns {Promise<void>} The result of the registration
+   */
   registerUser = async (req: Request, res: Response) => {
     const { email, password, username } = req.body
     if (!email || !password || !username) {
@@ -49,7 +63,12 @@ export class AuthController {
     }
   }
 
-  // Login
+  /**
+   * Login a user
+   * @param {Request} req - The request object
+   * @param {Response} res - The response object
+   * @returns {Promise<void>} The result of the login
+   */
   loginUser = async (req: Request, res: Response) => {
     const { email, password } = req.body
     if (!email || !password) {

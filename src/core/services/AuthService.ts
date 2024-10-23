@@ -2,6 +2,10 @@ import { IAuthRepository } from '../interfaces/IAuthRepository'
 import { CodedError } from '../models/CodedError'
 import { IAuthService } from './IAuthService'
 
+/**
+ * Auth service
+ * Implementation of the IAuthService interface
+ */
 export class AuthService implements IAuthService {
   private authRepository: IAuthRepository
 
@@ -31,6 +35,7 @@ export class AuthService implements IAuthService {
 
     return user
   }
+
   async deleteUser(email: string) {
     return this.authRepository.deleteUser(email)
   }

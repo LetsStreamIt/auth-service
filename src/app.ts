@@ -10,9 +10,11 @@ dotenv.config()
 
 const app = express()
 
+// Middleware to parse JSON and cookies
 app.use(bodyParser.json())
 app.use(cookieParser())
 
+// Middleware to allow CORS
 const corsOptions = {
   origin: 'http://localhost:5173',
   credentials: true // Allow credentials (cookies, authorization headers, etc.)
@@ -22,6 +24,7 @@ app.use(cors(corsOptions))
 
 app.use('/api/auth', router)
 
+// Error handling middleware
 app.use((_req, res, next) => {
   const error = new Error('Not Found')
   res.status(404)
