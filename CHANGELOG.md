@@ -1,3 +1,22 @@
+## [0.6.1](https://github.com/LetsStreamIt/auth-service/compare/v0.6.0...v0.6.1) (2024-10-23)
+
+### Dependency updates
+
+* **deps:** update dependency @types/axios to ^0.14.0 ([df92a29](https://github.com/LetsStreamIt/auth-service/commit/df92a29d983c83817b93558093fbb09b21bbbcde))
+* **deps:** update dependency @types/node to v20.16.13 ([1f3b685](https://github.com/LetsStreamIt/auth-service/commit/1f3b68597fb2ca2b70afa82e7feedf4f70df2a1f))
+* **deps:** update eslint monorepo to v9.13.0 ([a8a1ed1](https://github.com/LetsStreamIt/auth-service/commit/a8a1ed1c5fb47e00cd2e174cfe582e826ff91628))
+
+### Documentation
+
+* added initial documentation ([fddb93f](https://github.com/LetsStreamIt/auth-service/commit/fddb93f0d9b7ae297c19cb060e7a7fd21f3982a3))
+
+### Build and continuous integration
+
+* added automatic doc upload ([695f472](https://github.com/LetsStreamIt/auth-service/commit/695f472add3eaab835f9ffd54610f2f99b4fdae5))
+* added docs to pipeline success ([6bc53c7](https://github.com/LetsStreamIt/auth-service/commit/6bc53c7f30b8ace86748a370ca3bf65817bbac8f))
+* avoid uploading docs in pull requests ([2fd2df1](https://github.com/LetsStreamIt/auth-service/commit/2fd2df10de38016ce8679793241e0785241aa4fe))
+* fixed typo on docs build ([2391790](https://github.com/LetsStreamIt/auth-service/commit/23917906755e73bc908027aaaf788a05ca25b9dd))
+
 ## [0.6.0](https://github.com/LetsStreamIt/auth-service/compare/v0.5.5...v0.6.0) (2024-10-21)
 
 ### Features
