@@ -55,6 +55,8 @@ jobs:
     runs-on: ubuntu-latest
     needs:
       - release
+    if: github.event_name != 'pull_request' && github.ref == 'refs/heads/main'
+    # Skips if is PR or isn't inside main branch
     steps:
       - name: Checkout
         uses: actions/checkout@v4.2.1
@@ -81,7 +83,8 @@ jobs:
     runs-on: ubuntu-latest
     needs:
       - release
-    if: github.event_name != 'pull_request' && github.ref == 'refs/heads/main' # Skips if is PR or isn't inside main branch
+    if: github.event_name != 'pull_request' && github.ref == 'refs/heads/main'
+    # Skips if is PR or isn't inside main branch
     steps:
       - name: Checkout repository
         uses: actions/checkout@v4.2.1
