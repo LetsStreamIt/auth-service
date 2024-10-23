@@ -63,7 +63,7 @@ jobs:
         with:
           cache: npm
           node-version: lts/*
-      - run: npm run clean-install
+      - run: npm clean-install
       - run: npx typedoc --entryPointStrategy expand ./src
       - name: Deploy to GitHub Pages
         uses: crazy-max/ghaction-github-pages@v4
