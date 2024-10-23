@@ -2,12 +2,28 @@ import { Request, Response } from 'express'
 import { TokenUseCase } from '../../application/usecases/TokenUseCase'
 import { CodedError } from '../../core/models/CodedError'
 
+/**
+ * TokenController class
+ * This class is responsible for handling the token routes
+ * in the API.
+ */
 export class TokenController {
   private tokenUseCase: TokenUseCase
 
-  constructor(tokenUesCase: TokenUseCase) {
-    this.tokenUseCase = tokenUesCase
+  /**
+   * Constructor
+   * @param {TokenUseCase} tokenUseCase - The token use case
+   */
+  constructor(tokenUseCase: TokenUseCase) {
+    this.tokenUseCase = tokenUseCase
   }
+
+  /**
+   * Refresh the access token
+   * @param {Request} req - The request object
+   * @param {Response} res - The response object
+   * @returns {Promise<void>} The result of the token refresh
+   */
   refreshToken = async (req: Request, res: Response) => {
     if (!req.cookies) {
       res.status(400).json({ message: 'Refresh token not provided' })
@@ -26,6 +42,12 @@ export class TokenController {
     }
   }
 
+  /**
+   * Validate the access token
+   * @param {Request} req - The request object
+   * @param {Response} res - The response object
+   * @returns {Promise<void>} The result of the token validation
+   */
   validateToken = async (req: Request, res: Response) => {
     const authHeader = req.headers.authorization
 
@@ -51,6 +73,12 @@ export class TokenController {
     }
   }
 
+  /**
+   * Get data from the access token
+   * @param {Request} req - The request object
+   * @param {Response} res - The response object
+   * @returns {Promise<void>} The data from the access token
+   */
   getData = async (req: Request, res: Response) => {
     const authHeader = req.headers.authorization
 
