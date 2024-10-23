@@ -114,6 +114,7 @@ jobs:
       - build
       - release
       - deploy-image
+      - upload-docs
     if: >-
       always() && (
         contains(join(needs.*.result, ','), 'failure')
