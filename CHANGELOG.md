@@ -1,3 +1,13 @@
+## [0.6.2](https://github.com/LetsStreamIt/auth-service/compare/v0.6.1...v0.6.2) (2024-10-24)
+
+### Bug Fixes
+
+* fix account creation error ([31a6bf4](https://github.com/LetsStreamIt/auth-service/commit/31a6bf4186915708e04aac158802cecf4e18646a))
+
+### Build and continuous integration
+
+* **deps:** update docker/login-action digest to 5d8785b ([b3d7857](https://github.com/LetsStreamIt/auth-service/commit/b3d7857eb06e3b685371f0bd6b5b01592aa16c6d))
+
 ## [0.6.1](https://github.com/LetsStreamIt/auth-service/compare/v0.6.0...v0.6.1) (2024-10-23)
 
 ### Dependency updates
