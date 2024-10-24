@@ -50,7 +50,7 @@ export class AuthController {
       const user = await this.authUseCase.register(email, password)
       const data = new TokenData(user.id, email)
       const accessToken = await this.tokenUseCase.generate(data, '15m')
-      this.profileUseCase.createUserProfile(email, username, accessToken)
+      await this.profileUseCase.createUserProfile(email, username, accessToken)
       const refreshToken = await this.tokenUseCase.generate(data, '24h')
       res.cookie('refreshToken', refreshToken, { httpOnly: true })
       res.status(201).json({ ...data, accessToken, refreshToken })
