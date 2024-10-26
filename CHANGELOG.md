@@ -1,3 +1,13 @@
+## [0.7.1](https://github.com/LetsStreamIt/auth-service/compare/v0.7.0...v0.7.1) (2024-10-26)
+
+### Bug Fixes
+
+* corrected docs and docker release cycle ([a39693e](https://github.com/LetsStreamIt/auth-service/commit/a39693e78dc18cf14ffe917f3b2578aa300fcce8))
+
+### Build and continuous integration
+
+* added logging of semantic release output ([a342f65](https://github.com/LetsStreamIt/auth-service/commit/a342f656ca934f526efbaedd210c33d3ad1c055b))
+
 ## [0.7.0](https://github.com/LetsStreamIt/auth-service/compare/v0.6.4...v0.7.0) (2024-10-26)
 
 ### Features
