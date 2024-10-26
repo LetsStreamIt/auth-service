@@ -1,3 +1,13 @@
+## [0.7.0](https://github.com/LetsStreamIt/auth-service/compare/v0.6.4...v0.7.0) (2024-10-26)
+
+### Features
+
+* added winston as logger ([c778acb](https://github.com/LetsStreamIt/auth-service/commit/c778acba26d2c7cb07a8a9449d38539bd6e48d8d))
+
+### Build and continuous integration
+
+* fix check if release happened ([4232fe5](https://github.com/LetsStreamIt/auth-service/commit/4232fe57614b5cca0e4bfd60571d62dc1ab55121))
+
 ## [0.6.4](https://github.com/LetsStreamIt/auth-service/compare/v0.6.3...v0.6.4) (2024-10-26)
 
 ### Bug Fixes
