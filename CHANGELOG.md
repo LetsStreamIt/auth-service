@@ -1,3 +1,9 @@
+## [0.7.2](https://github.com/LetsStreamIt/auth-service/compare/v0.7.1...v0.7.2) (2024-10-26)
+
+### Bug Fixes
+
+* releasing docs and docker image after every commit ([fe3dbee](https://github.com/LetsStreamIt/auth-service/commit/fe3dbee1e890d82c8e3141349f43fde8a6de9bf2))
+
 ## [0.7.1](https://github.com/LetsStreamIt/auth-service/compare/v0.7.0...v0.7.1) (2024-10-26)
 
 ### Bug Fixes
