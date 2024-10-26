@@ -50,6 +50,7 @@ jobs:
           GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         run: |
           npx semantic-release > semantic_release_output.txt || true
+          cat semantic_release_output.txt
       - name: Check if release was created
         id: check-release
         run: |
