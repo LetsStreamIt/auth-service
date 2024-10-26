@@ -49,17 +49,13 @@ jobs:
         env:
           GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         run: |
-          npx semantic-release > semantic_release_output.txt || true
+          npx semantic-release
           cat semantic_release_output.txt
       - name: Check if release was created
         id: check-release
-        run: >
-          if grep -q "no new version is released" semantic_release_output.txt; then
-            echo "release_created=false" >> $GITHUB_ENV
-          else
-            echo "release_created=true" >> $GITHUB_ENV
-          fi
+        run: 'echo "release_created=$(grep -q "no new version is released" semantic_release_output.txt && echo false || echo true)" >> $GITHUB_ENV'
         shell: bash
+
   upload-docs:
     concurrency:
       # Only one release job at a time. Strictly sequential.
