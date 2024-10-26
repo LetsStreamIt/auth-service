@@ -1,5 +1,6 @@
 import { AuthUseCase } from '../../../application/usecases/AuthUseCase'
 import axios from 'axios'
+import logger from '../../Logger'
 
 /**
  * ProfileRepository class
@@ -35,6 +36,8 @@ export class ProfileRepository {
       { headers: { Authorization: `Bearer ${accessToken}` } }
     )
     if (response.status !== 201) {
+      logger.error('Profile service error')
+      logger.info(`Deleting user with email: ${email}`)
       const deleteResult = await this.authUseCase.delete(email)
       if (deleteResult.deletedCount === 0) {
         throw new Error('User deletion error')
