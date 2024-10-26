@@ -1,3 +1,13 @@
+## [0.6.4](https://github.com/LetsStreamIt/auth-service/compare/v0.6.3...v0.6.4) (2024-10-26)
+
+### Bug Fixes
+
+* cors settings ([cc4003f](https://github.com/LetsStreamIt/auth-service/commit/cc4003ff433aed0184b8017bc610bf2b75cd2ec3))
+
+### General maintenance
+
+* add debug print to release step ([13050fb](https://github.com/LetsStreamIt/auth-service/commit/13050fb1432b590b4c375766cd88ec9df527bb49))
+
 ## [0.6.3](https://github.com/LetsStreamIt/auth-service/compare/v0.6.2...v0.6.3) (2024-10-26)
 
 ### Dependency updates
