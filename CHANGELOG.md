@@ -1,3 +1,27 @@
+## [0.6.3](https://github.com/LetsStreamIt/auth-service/compare/v0.6.2...v0.6.3) (2024-10-26)
+
+### Dependency updates
+
+* **deps:** update dependency @types/axios to v0.14.4 ([8ff517b](https://github.com/LetsStreamIt/auth-service/commit/8ff517b37c31a32b39ba5fc8d6cd44bbc6641c0d))
+* **deps:** update dependency @types/chai-http to v4.2.4 ([7163995](https://github.com/LetsStreamIt/auth-service/commit/7163995d525e4f6c1dfc5717a2ba38406092e035))
+* **deps:** update dependency @types/node to v20.16.14 ([a56cc2b](https://github.com/LetsStreamIt/auth-service/commit/a56cc2b214b34822bf07a2ce64884e0519d0ff37))
+* **deps:** update dependency semantic-release-preconfigured-conventional-commits to v1.1.112 ([e92c1f1](https://github.com/LetsStreamIt/auth-service/commit/e92c1f1adf560780772e21a80acec7b16d0236df))
+* **deps:** update typescript-eslint monorepo to v8.11.0 ([b97e1d4](https://github.com/LetsStreamIt/auth-service/commit/b97e1d4ef89e9e36bf8d435cb5fdbb06ce631991))
+
+### Bug Fixes
+
+* bcrypt does not work on plain alpine linux ([b5f71a0](https://github.com/LetsStreamIt/auth-service/commit/b5f71a08bfd3173e326464f652da5667f8ee3788))
+
+### Build and continuous integration
+
+* **deps:** update actions/checkout action to v4.2.2 ([3559784](https://github.com/LetsStreamIt/auth-service/commit/3559784fd20060b7443cb9315d64de9beed34f7c))
+* **deps:** update actions/setup-node action to v4.1.0 ([2c4d481](https://github.com/LetsStreamIt/auth-service/commit/2c4d481612b408b1f3f329138e29ec75fcc27731))
+* **deps:** update danysk/action-checkout action to v0.2.22 ([4673456](https://github.com/LetsStreamIt/auth-service/commit/46734567f3493b5c639da11647097b3b90e00a7e))
+* **deps:** update docker/build-push-action digest to 5e99dac ([e3a9310](https://github.com/LetsStreamIt/auth-service/commit/e3a9310c773c73cd3c5532c0e0fa7f2e128eaa14))
+* **deps:** update docker/login-action digest to 0689575 ([f29418f](https://github.com/LetsStreamIt/auth-service/commit/f29418f47f5f737f74166ddfa5617f20684f8232))
+* **deps:** update docker/metadata-action digest to d31acd5 ([f2c6d37](https://github.com/LetsStreamIt/auth-service/commit/f2c6d374e902bf32600bd5b2fa5c5137d50479ae))
+* release docs and docker image only when a new release is made ([d070e04](https://github.com/LetsStreamIt/auth-service/commit/d070e045faf5986f0569a753c065281a54acfdff))
+
 ## [0.6.2](https://github.com/LetsStreamIt/auth-service/compare/v0.6.1...v0.6.2) (2024-10-24)
 
 ### Bug Fixes
