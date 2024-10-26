@@ -2,6 +2,7 @@ import { User } from '../../../core/models/User'
 import { IAuthRepository } from '../../../core/interfaces/IAuthRepository'
 import bcrypt from 'bcrypt'
 import mongoose from 'mongoose'
+import logger from '../../Logger'
 
 /**
  * AuthRepository
@@ -16,18 +17,20 @@ export class AuthRepository implements IAuthRepository {
         .connect(mongoUri, {
           socketTimeoutMS: 1000
         })
-        .then(() => console.log('MongoDB connected'))
+        .then(() => logger.info('Connected to MongoDB'))
     } catch (error) {
-      console.error('Error connecting to MongoDB:', error)
+      logger.error('Error connecting to MongoDB', error)
       process.exit(1)
     }
   }
   async findUserByEmail(email: string) {
+    logger.info(`Finding user with email: ${email}`)
     return User.findOne({ email })
   }
 
   async createUser(email: string, password: string) {
     const user = new User({ email, password })
+    logger.info(`Creating user with email: ${email}`)
     return User.create(user)
   }
 
@@ -36,6 +39,7 @@ export class AuthRepository implements IAuthRepository {
   }
 
   async deleteUser(email: string) {
+    logger.info(`Deleting user with email: ${email}`)
     return User.deleteOne({ email })
   }
 }
