@@ -1,3 +1,19 @@
+## [0.7.3](https://github.com/LetsStreamIt/auth-service/compare/v0.7.2...v0.7.3) (2024-10-27)
+
+### Dependency updates
+
+* **deps:** update dependency @types/node to v20.16.15 ([826725a](https://github.com/LetsStreamIt/auth-service/commit/826725a915eefefa72c1fb0f5272d71520a1ab61))
+* **deps:** update dependency @types/node to v20.17.0 ([e43ff88](https://github.com/LetsStreamIt/auth-service/commit/e43ff888db83e8aec478ee0058fc55e401672964))
+* **deps:** update dependency @vue/eslint-config-prettier to v10.1.0 ([a2ab7f7](https://github.com/LetsStreamIt/auth-service/commit/a2ab7f7d5d9074718bafc8b5fc70d93945c04539))
+
+### Bug Fixes
+
+* fixed chai-http and axios types deps ([b3b6674](https://github.com/LetsStreamIt/auth-service/commit/b3b66747dc1138100a27d24019095f054ec5b5e5))
+
+### Build and continuous integration
+
+* added build step to pipeline ([50ca758](https://github.com/LetsStreamIt/auth-service/commit/50ca758432e2328ec429ceeb808d2b55993a42eb))
+
 ## [0.7.2](https://github.com/LetsStreamIt/auth-service/compare/v0.7.1...v0.7.2) (2024-10-26)
 
 ### Bug Fixes
