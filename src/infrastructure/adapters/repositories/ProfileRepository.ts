@@ -1,6 +1,7 @@
 import { AuthUseCase } from '../../../application/usecases/AuthUseCase'
 import axios from 'axios'
 import logger from '../../Logger'
+import { standardConfig } from '../../../config'
 
 /**
  * ProfileRepository class
@@ -29,7 +30,7 @@ export class ProfileRepository {
    * @throws {Error} If the profile service is not available
    */
   async createUserProfile(email: string, username: string, accessToken: string) {
-    const profileServiceUri = `${process.env.PROFILE_SERVICE_URI}` || 'http://localhost:3001'
+    const profileServiceUri = `http://${standardConfig.PROFILE_SERVICE_HOSTNAME}:${standardConfig.PROFILE_SERVICE_PORT}`
     const response = await axios.post(
       `${profileServiceUri}/users`,
       { email: email, username: username },

@@ -1,6 +1,7 @@
 import app from './app'
+import { standardConfig } from './config'
 
-const PORT = process.env.PORT || 3000
+const PORT = standardConfig.LOCAL_PORT
 
 app.listen(PORT, () => {
   console.log(`Server running on port ${PORT}`)
