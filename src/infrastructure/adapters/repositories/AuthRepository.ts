@@ -3,6 +3,7 @@ import { IAuthRepository } from '../../../core/interfaces/IAuthRepository'
 import bcrypt from 'bcrypt'
 import mongoose from 'mongoose'
 import logger from '../../Logger'
+import { standardConfig } from '../../../config'
 
 /**
  * AuthRepository
@@ -11,7 +12,7 @@ import logger from '../../Logger'
  */
 export class AuthRepository implements IAuthRepository {
   constructor() {
-    const mongoUri = process.env.MONGO_URI || 'mongodb://localhost:27017'
+    const mongoUri = `mongodb://${standardConfig.MONGO_HOSTNAME}:${standardConfig.MONGO_PORT}/auth`
     try {
       mongoose
         .connect(mongoUri, {
