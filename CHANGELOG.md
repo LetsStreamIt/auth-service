@@ -1,3 +1,9 @@
+## [0.7.4](https://github.com/LetsStreamIt/auth-service/compare/v0.7.3...v0.7.4) (2024-10-27)
+
+### Bug Fixes
+
+* changed env variables names to match naming convention ([341eca3](https://github.com/LetsStreamIt/auth-service/commit/341eca36aae8a7caba8888bbdcda5691ad687cb3))
+
 ## [0.7.3](https://github.com/LetsStreamIt/auth-service/compare/v0.7.2...v0.7.3) (2024-10-27)
 
 ### Dependency updates
