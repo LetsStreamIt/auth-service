@@ -1,10 +1,14 @@
 # build stage
 FROM node:lts AS build-stage
+
 WORKDIR /app
+# Install dependencies
 COPY package*.json ./
 RUN npm install
+# Build
 COPY . .
 RUN npm run build
 
-EXPOSE 3000
-CMD ["npm", "run", "serve"]
+# Run app using pm2
+RUN npm install pm2 -g 
+CMD ["pm2-runtime", "dist/index.js"]
