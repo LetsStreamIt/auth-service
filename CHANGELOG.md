@@ -1,3 +1,20 @@
+## [0.8.0](https://github.com/LetsStreamIt/auth-service/compare/v0.7.4...v0.8.0) (2024-10-29)
+
+### Features
+
+* add deployment using pm2 ([7d37ca1](https://github.com/LetsStreamIt/auth-service/commit/7d37ca194cbba66a9ec7ef7692d22e3c2a288e3a))
+
+### Dependency updates
+
+* **deps:** update dependency @types/node to v20.17.1 ([a519cde](https://github.com/LetsStreamIt/auth-service/commit/a519cde8c78fe2b5991bc59c007cdc7a3e2737c5))
+* **deps:** update dependency @types/node to v22 ([2cf8a54](https://github.com/LetsStreamIt/auth-service/commit/2cf8a54289666a0a2d8308b45e39c443b4c383f3))
+* **deps:** update dependency mongoose to v8.7.3 ([55014de](https://github.com/LetsStreamIt/auth-service/commit/55014de7bc1ddf5bf6064928a712f9c3757e725b))
+
+### General maintenance
+
+* add healthcheck for other services ([df93fd1](https://github.com/LetsStreamIt/auth-service/commit/df93fd12822f8ecb71803c2e292ec84df274f790))
+* add package lock ([61b101e](https://github.com/LetsStreamIt/auth-service/commit/61b101e2e64a3d84cb36e1029f4efadca661e473))
+
 ## [0.7.4](https://github.com/LetsStreamIt/auth-service/compare/v0.7.3...v0.7.4) (2024-10-27)
 
 ### Bug Fixes
