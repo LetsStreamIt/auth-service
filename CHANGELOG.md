@@ -1,3 +1,9 @@
+## [0.8.1](https://github.com/LetsStreamIt/auth-service/compare/v0.8.0...v0.8.1) (2024-10-29)
+
+### Bug Fixes
+
+* changed port env variable name ([c943bb3](https://github.com/LetsStreamIt/auth-service/commit/c943bb3de091566c6bcbce0971cd2621c723d87d))
+
 ## [0.8.0](https://github.com/LetsStreamIt/auth-service/compare/v0.7.4...v0.8.0) (2024-10-29)
 
 ### Features
