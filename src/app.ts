@@ -23,6 +23,16 @@ const corsOptions = {
 
 app.use(cors(corsOptions))
 
+// Health Check
+app.use(
+  '/healthcheck',
+  require('express-healthcheck')({
+    healthy: function () {
+      return { everything: 'is ok' }
+    }
+  })
+)
+
 app.use('/api/auth', router)
 
 // Error handling middleware
