@@ -56,7 +56,7 @@ export class AuthController {
       logger.info(`Creating profile for user: ${email}`)
       await this.profileUseCase.createUserProfile(email, username, accessToken)
       const refreshToken = await this.tokenUseCase.generate(data, '24h')
-      res.cookie('refreshToken', refreshToken, { httpOnly: true })
+      res.cookie('refreshToken', refreshToken, { httpOnly: true, sameSite: 'none', secure: true })
       res.status(201).json({ ...data, accessToken, refreshToken })
     } catch (error) {
       if (error instanceof CodedError) {
@@ -87,7 +87,7 @@ export class AuthController {
       const data = new TokenData(user.id, email)
       const accessToken = await this.tokenUseCase.generate(data, '15m')
       const refreshToken = await this.tokenUseCase.generate(data, '24h')
-      res.cookie('refreshToken', refreshToken, { httpOnly: true })
+      res.cookie('refreshToken', refreshToken, { httpOnly: true, sameSite: 'none', secure: true })
       res.status(200).json({ ...data, accessToken, refreshToken })
     } catch (error) {
       if (error instanceof CodedError) {
