@@ -1,3 +1,9 @@
+## [0.8.2](https://github.com/LetsStreamIt/auth-service/compare/v0.8.1...v0.8.2) (2024-10-29)
+
+### Bug Fixes
+
+* cookies settings ([4869117](https://github.com/LetsStreamIt/auth-service/commit/48691172c0f55619b4c693fd213dda546d689f66))
+
 ## [0.8.1](https://github.com/LetsStreamIt/auth-service/compare/v0.8.0...v0.8.1) (2024-10-29)
 
 ### Bug Fixes
