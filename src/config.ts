@@ -8,7 +8,7 @@ interface ServiceConfig {
 }
 
 export const standardConfig: ServiceConfig = {
-  LOCAL_PORT: process.env.PORT || '3000',
+  LOCAL_PORT: process.env.AUTH_SERVICE_PORT || '3000',
   JWT_SECRET: process.env.JWT_SECRET || 'testingsecret',
   PROFILE_SERVICE_HOSTNAME: process.env.PROFILE_SERVICE_HOSTNAME || 'localhost',
   PROFILE_SERVICE_PORT: process.env.PROFILE_SERVICE_PORT || '8080',
