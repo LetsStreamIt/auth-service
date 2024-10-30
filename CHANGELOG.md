@@ -1,3 +1,24 @@
+## [1.0.0](https://github.com/LetsStreamIt/auth-service/compare/v0.8.2...v1.0.0) (2024-10-30)
+
+### ⚠ BREAKING CHANGES
+
+* Release v1.0.0
+
+### Dependency updates
+
+* **deps:** update node.js to v22 ([eebc606](https://github.com/LetsStreamIt/auth-service/commit/eebc6062897436912b19dd6cf1e62a72e144ab1a))
+
+### Build and continuous integration
+
+* add lint and format steps ([e6f0537](https://github.com/LetsStreamIt/auth-service/commit/e6f0537a81ceebeaca9b11e0b6f069efc888a194))
+* release docs and docker image only when a new release is made ([d595d02](https://github.com/LetsStreamIt/auth-service/commit/d595d0233fd8093d8c23dad238c11fd1279d88c2))
+* split lint and format check from build job ([16963ed](https://github.com/LetsStreamIt/auth-service/commit/16963ede62af3e90849aa0fb9ea6fe558924c386))
+
+### General maintenance
+
+* update old require style ([39c6699](https://github.com/LetsStreamIt/auth-service/commit/39c669976f1d6a98b493d58bcf6cc72ba2b1a1e9))
+* update readme add contributing ([c8b6e31](https://github.com/LetsStreamIt/auth-service/commit/c8b6e31d07966ed60bdfb95cc434678d915450f7))
+
 ## [0.8.2](https://github.com/LetsStreamIt/auth-service/compare/v0.8.1...v0.8.2) (2024-10-29)
 
 ### Bug Fixes
