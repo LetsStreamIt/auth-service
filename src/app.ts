@@ -6,6 +6,7 @@ import dotenv from 'dotenv'
 import cors from 'cors'
 import router from './infrastructure/routes/AuthRoutes'
 import logger from './infrastructure/Logger'
+import healthcheck from 'express-healthcheck'
 
 dotenv.config()
 
@@ -26,7 +27,7 @@ app.use(cors(corsOptions))
 // Health Check
 app.use(
   '/healthcheck',
-  require('express-healthcheck')({
+  healthcheck({
     healthy: function () {
       return { everything: 'is ok' }
     }
