@@ -27,6 +27,10 @@ jobs:
         env:
           jwt_secret: ${{ secrets.JWTSECRET }}
         run: npm test
+      - name: Check code quality
+        run: npm run lint:check
+      - name: Check code formatting
+        run: npm run format:check
   release:
     permissions:
       contents: write
