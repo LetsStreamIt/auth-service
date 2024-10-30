@@ -27,10 +27,20 @@ jobs:
         env:
           jwt_secret: ${{ secrets.JWTSECRET }}
         run: npm test
-      - name: Check code quality
-        run: npm run lint:check
-      - name: Check code formatting
-        run: npm run format:check
+  code-quality:
+    runs-on: ubuntu-latest
+    needs:
+      - build
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4.2.2
+      - uses: actions/setup-node@v4.1.0
+        with:
+          cache: npm
+          node-version: lts/*
+      - run: npm clean-install
+      - run: npm run lint:check
+      - run: npm run format:check
   release:
     permissions:
       contents: write
@@ -39,7 +49,7 @@ jobs:
       group: release
     runs-on: ubuntu-latest
     needs:
-      - build
+      - code-quality
     outputs:
       release_created: ${{ steps.check-release.outputs.release_created }}
     steps:
@@ -65,7 +75,7 @@ jobs:
   upload-docs:
     concurrency:
       # Only one release job at a time. Strictly sequential.
-      group: release
+      group: upload-docs
     runs-on: ubuntu-latest
     needs:
       - release
@@ -93,7 +103,7 @@ jobs:
       contents: write
       packages: write
     concurrency:
-      group: release
+      group: deploy-image
     runs-on: ubuntu-latest
     needs:
       - release
@@ -129,6 +139,7 @@ jobs:
     runs-on: ubuntu-latest
     needs:
       - build
+      - code-quality
       - release
       - deploy-image
       - upload-docs
