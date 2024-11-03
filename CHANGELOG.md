@@ -1,3 +1,28 @@
+## [1.1.0](https://github.com/LetsStreamIt/auth-service/compare/v1.0.0...v1.1.0) (2024-11-03)
+
+### Features
+
+* add logout api ([2b65883](https://github.com/LetsStreamIt/auth-service/commit/2b658837c4add14efec850a993d6ef134c346aaf))
+
+### Dependency updates
+
+* **deps:** update dependency @types/node to v22.8.4 ([815b684](https://github.com/LetsStreamIt/auth-service/commit/815b6848100e2cc0934b67ceb723832149ad5488))
+* **deps:** update dependency @types/node to v22.8.5 ([f6733b2](https://github.com/LetsStreamIt/auth-service/commit/f6733b24cec7e6cabc84799e5ad995f2a3218952))
+* **deps:** update dependency mocha to v10.8.1 ([6d14c63](https://github.com/LetsStreamIt/auth-service/commit/6d14c63e9427b3998dddf0e04af69e8fb74263a8))
+* **deps:** update dependency mocha to v10.8.2 ([4f73c5b](https://github.com/LetsStreamIt/auth-service/commit/4f73c5b5b6266a4c6abbd36169826f80bfc2ba3c))
+* **deps:** update dependency semantic-release-preconfigured-conventional-commits to v1.1.113 ([d66835c](https://github.com/LetsStreamIt/auth-service/commit/d66835c0f1872b2dc7b7962dc11e5b12954a6ba0))
+* **deps:** update typescript-eslint monorepo to v8.12.0 ([d3f4e2d](https://github.com/LetsStreamIt/auth-service/commit/d3f4e2d28952d2864ea212376178211475f758da))
+* **deps:** update typescript-eslint monorepo to v8.12.1 ([d8c0c85](https://github.com/LetsStreamIt/auth-service/commit/d8c0c85200cd337ba32beb87afa7c96e2e3c3b4a))
+* **deps:** update typescript-eslint monorepo to v8.12.2 ([31a7e5f](https://github.com/LetsStreamIt/auth-service/commit/31a7e5f932c0e1564612a93961087362383ef00b))
+
+### Build and continuous integration
+
+* **deps:** update docker/metadata-action digest to 0de3687 ([b037b98](https://github.com/LetsStreamIt/auth-service/commit/b037b9879ec1b663167c2d64543c5a169bbe4a6a))
+
+### General maintenance
+
+* update readme ([3172361](https://github.com/LetsStreamIt/auth-service/commit/3172361ff7653ca9221390f25322ae95fe6effe4))
+
 ## [1.0.0](https://github.com/LetsStreamIt/auth-service/compare/v0.8.2...v1.0.0) (2024-10-30)
 
 ### ⚠ BREAKING CHANGES
