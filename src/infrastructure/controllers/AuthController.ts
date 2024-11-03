@@ -99,4 +99,15 @@ export class AuthController {
       }
     }
   }
+
+  /**
+   * Logout a user
+   * @param {Request} req - The request object
+   * @param {Response} res - The response object
+   * @returns {Promise<void>} The result of the logout
+   */
+  logoutUser = async (req: Request, res: Response) => {
+    res.clearCookie('refreshToken')
+    res.status(200).json({ message: 'User logged out' })
+  }
 }
