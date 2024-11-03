@@ -14,6 +14,7 @@ const authController = new AuthController(tokenUseCase)
 
 router.post('/register', authController.registerUser)
 router.post('/login', authController.loginUser)
+router.post('/logout', authController.logoutUser)
 router.post('/refresh', tokenController.refreshToken)
 router.post('/validate', tokenController.validateToken)
 router.get('/data', tokenController.getData)
