@@ -9,13 +9,9 @@ import { standardConfig } from '../../../config'
  * in order to create a user profile.
  */
 export class ProfileRepository {
-  private authUseCase: AuthUseCase
+  private authUseCase: AuthUseCase | null = null
 
-  /**
-   * Constructor
-   * @param {AuthUseCase} authUseCase - The authentication use case
-   */
-  constructor(authUseCase: AuthUseCase) {
+  setAuthUseCase(authUseCase: AuthUseCase) {
     this.authUseCase = authUseCase
   }
 
@@ -30,6 +26,9 @@ export class ProfileRepository {
    * @throws {Error} If the profile service is not available
    */
   async createUserProfile(email: string, username: string, accessToken: string) {
+    if (!this.authUseCase) {
+      throw new Error('Auth use case not set')
+    }
     const profileServiceUri = `http://${standardConfig.PROFILE_SERVICE_HOSTNAME}:${standardConfig.PROFILE_SERVICE_PORT}`
     const response = await axios.post(
       `${profileServiceUri}/users`,

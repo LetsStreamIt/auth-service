@@ -1,5 +1,9 @@
+import { ProfileUseCase } from '../../application/usecases/ProfileUseCase'
+import { TokenUseCase } from '../../application/usecases/TokenUseCase'
+import logger from '../../infrastructure/Logger'
 import { IAuthRepository } from '../interfaces/IAuthRepository'
 import { CodedError } from '../models/CodedError'
+import { TokenData } from '../models/TokenData'
 import { IAuthService } from './IAuthService'
 
 /**
@@ -7,19 +11,31 @@ import { IAuthService } from './IAuthService'
  * Implementation of the IAuthService interface
  */
 export class AuthService implements IAuthService {
-  private authRepository: IAuthRepository
+  private readonly authRepository: IAuthRepository
+  private readonly profileUseCase: ProfileUseCase
+  private readonly tokenUseCase: TokenUseCase
 
-  constructor(authRepository: IAuthRepository) {
+  constructor(
+    authRepository: IAuthRepository,
+    profileUseCase: ProfileUseCase,
+    tokenUseCase: TokenUseCase
+  ) {
     this.authRepository = authRepository
+    this.profileUseCase = profileUseCase
+    this.tokenUseCase = tokenUseCase
   }
 
-  async registerUser(email: string, password: string) {
+  async registerUser(email: string, password: string, username: string) {
     const existingUser = await this.authRepository.findUserByEmail(email)
     if (existingUser) {
       throw new CodedError(400, 'User already exists')
     }
-
-    return this.authRepository.createUser(email, password)
+    const res = await this.authRepository.createUser(email, password)
+    const data = new TokenData(res.id, email)
+    const accessToken = await this.tokenUseCase.generate(data, '15m')
+    logger.info(`Creating profile for user: ${email}`)
+    await this.profileUseCase.createUserProfile(email, username, accessToken)
+    return res
   }
 
   async loginUser(email: string, password: string) {

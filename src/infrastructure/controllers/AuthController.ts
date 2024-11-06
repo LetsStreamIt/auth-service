@@ -27,13 +27,14 @@ export class AuthController {
    * @param {TokenUseCase} tokenUseCase - The token use case
    */
   constructor(tokenUseCase: TokenUseCase) {
-    const authRepository = new AuthRepository()
-    const authService = new AuthService(authRepository)
-    this.authUseCase = new AuthUseCase(authService)
     this.tokenUseCase = tokenUseCase
-    this.profileUseCase = new ProfileUseCase(
-      new ProfileService(new ProfileRepository(this.authUseCase))
-    )
+    const authRepository = new AuthRepository()
+    const profileRepository = new ProfileRepository()
+    const profileService = new ProfileService(profileRepository)
+    this.profileUseCase = new ProfileUseCase(profileService)
+    const authService = new AuthService(authRepository, this.profileUseCase, this.tokenUseCase)
+    this.authUseCase = new AuthUseCase(authService)
+    profileRepository.setAuthUseCase(this.authUseCase)
   }
 
   /**
@@ -50,11 +51,9 @@ export class AuthController {
     }
     logger.info(`Registering user with email: ${email}`)
     try {
-      const user = await this.authUseCase.register(email, password)
+      const user = await this.authUseCase.register(email, password, username)
       const data = new TokenData(user.id, email)
       const accessToken = await this.tokenUseCase.generate(data, '15m')
-      logger.info(`Creating profile for user: ${email}`)
-      await this.profileUseCase.createUserProfile(email, username, accessToken)
       const refreshToken = await this.tokenUseCase.generate(data, '24h')
       res.cookie('refreshToken', refreshToken, { httpOnly: true, sameSite: 'none', secure: true })
       res.status(201).json({ ...data, accessToken, refreshToken })

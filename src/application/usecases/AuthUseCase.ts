@@ -20,10 +20,11 @@ export class AuthUseCase {
    * Register a new user
    * @param {string} email - The email of the user
    * @param {string} password - The password of the user
+   * @param {string} username - The username of the user
    * @returns {Promise<Document>} The result of the registration
    */
-  async register(email: string, password: string) {
-    return await this.authService.registerUser(email, password)
+  async register(email: string, password: string, username: string) {
+    return await this.authService.registerUser(email, password, username)
   }
 
   /**
