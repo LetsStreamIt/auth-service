@@ -1,15 +1,15 @@
 import { Request, Response } from 'express'
 import { AuthUseCase } from '../../application/usecases/AuthUseCase'
-import { AuthRepository } from '../adapters/repositories/AuthRepository'
+import { AuthRepository } from '../../infrastructure/adapters/repositories/AuthRepository'
 import { AuthService } from '../../domain/services/AuthService'
 import { Error } from 'mongoose'
 import { CodedError } from '../../domain/models/CodedError'
 import { TokenUseCase } from '../../application/usecases/TokenUseCase'
 import { TokenData } from '../../domain/models/TokenData'
-import { ProfileRepository } from '../adapters/repositories/ProfileRepository'
+import { ProfileRepository } from '../../infrastructure/adapters/repositories/ProfileRepository'
 import { ProfileService } from '../../domain/services/ProfileService'
 import { ProfileUseCase } from '../../application/usecases/ProfileUseCase'
-import logger from '../Logger'
+import logger from '../../infrastructure/Logger'
 
 /**
  * AuthController class

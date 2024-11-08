@@ -4,7 +4,7 @@ import cookieParser from 'cookie-parser'
 
 import dotenv from 'dotenv'
 import cors from 'cors'
-import router from './infrastructure/routes/AuthRoutes'
+import router from './presentation/routes/AuthRoutes'
 import logger from './infrastructure/Logger'
 import healthcheck from 'express-healthcheck'
 
