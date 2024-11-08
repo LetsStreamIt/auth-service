@@ -1,5 +1,5 @@
 import app from './app'
-import { standardConfig } from './config'
+import { standardConfig } from './domain/config'
 
 const PORT = standardConfig.LOCAL_PORT
 

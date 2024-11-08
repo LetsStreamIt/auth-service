@@ -1,6 +1,6 @@
 import { Router } from 'express'
 import { AuthController } from '../controllers/AuthController'
-import { TokenService } from '../../core/services/TokenService'
+import { TokenService } from '../../domain/services/TokenService'
 import { TokenUseCase } from '../../application/usecases/TokenUseCase'
 import { TokenController } from '../controllers/TokenController'
 

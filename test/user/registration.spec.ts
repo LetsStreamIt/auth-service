@@ -2,7 +2,7 @@ import chaiModule, { expect } from 'chai'
 import chaiHttp from 'chai-http'
 import sinon from 'sinon'
 import app from '../../src/app'
-import { User } from '../../src/core/models/User'
+import { User } from '../../src/domain/models/User'
 import mongoose from 'mongoose'
 import { ProfileRepository } from '../../src/infrastructure/adapters/repositories/ProfileRepository'
 

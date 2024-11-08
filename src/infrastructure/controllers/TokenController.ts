@@ -1,6 +1,6 @@
 import { Request, Response } from 'express'
 import { TokenUseCase } from '../../application/usecases/TokenUseCase'
-import { CodedError } from '../../core/models/CodedError'
+import { CodedError } from '../../domain/models/CodedError'
 
 /**
  * TokenController class

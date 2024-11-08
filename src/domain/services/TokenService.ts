@@ -2,7 +2,7 @@ import jwt from 'jsonwebtoken'
 import { ITokenService } from './ITokenService'
 import { CodedError } from '../models/CodedError'
 import { TokenData } from '../models/TokenData'
-import { standardConfig } from '../../config'
+import { standardConfig } from '../config'
 
 /**
  * Token service

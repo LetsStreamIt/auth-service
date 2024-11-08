@@ -1,4 +1,4 @@
-import { IAuthService } from '../../core/services/IAuthService'
+import { IAuthService } from '../../domain/services/IAuthService'
 
 /**
  * AuthUseCase

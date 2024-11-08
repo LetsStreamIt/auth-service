@@ -1,4 +1,4 @@
-import { ProfileService } from '../../core/services/ProfileService'
+import { ProfileService } from '../../domain/services/ProfileService'
 
 /**
  * ProfileUseCase

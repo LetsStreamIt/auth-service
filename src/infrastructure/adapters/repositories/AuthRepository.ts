@@ -1,9 +1,9 @@
-import { User } from '../../../core/models/User'
-import { IAuthRepository } from '../../../core/interfaces/IAuthRepository'
+import { User } from '../../../domain/models/User'
+import { IAuthRepository } from '../../../domain/interfaces/IAuthRepository'
 import bcrypt from 'bcrypt'
 import mongoose from 'mongoose'
 import logger from '../../Logger'
-import { standardConfig } from '../../../config'
+import { standardConfig } from '../../../domain/config'
 
 /**
  * AuthRepository

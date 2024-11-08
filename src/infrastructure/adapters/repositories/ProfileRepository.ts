@@ -1,7 +1,7 @@
 import { AuthUseCase } from '../../../application/usecases/AuthUseCase'
 import axios from 'axios'
 import logger from '../../Logger'
-import { standardConfig } from '../../../config'
+import { standardConfig } from '../../../domain/config'
 
 /**
  * ProfileRepository class
