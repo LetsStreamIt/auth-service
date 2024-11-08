@@ -30,7 +30,7 @@
     "prepare": "husky",
     "serve": "nodemon src/index.ts",
     "start": "node dist/index.js",
-    "test": "mocha --exit"
+    "test": "mocha --exit && depcruise src"
   },
   "devDependencies": {
     "@commitlint/cli": "^19.4.0",
