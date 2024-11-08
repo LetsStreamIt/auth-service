@@ -51,7 +51,7 @@ export class TokenController {
   validateToken = async (req: Request, res: Response) => {
     const authHeader = req.headers.authorization
 
-    if (!authHeader || !authHeader.startsWith('Bearer ')) {
+    if (!authHeader?.startsWith('Bearer ')) {
       res.status(401).json({ message: 'Authorization header missing or malformed' })
       return
     }
@@ -82,7 +82,7 @@ export class TokenController {
   getData = async (req: Request, res: Response) => {
     const authHeader = req.headers.authorization
 
-    if (!authHeader || !authHeader.startsWith('Bearer ')) {
+    if (!authHeader?.startsWith('Bearer ')) {
       res.status(401).json({ message: 'Authorization header missing or malformed' })
       return
     }
