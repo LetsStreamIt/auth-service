@@ -1,6 +1,6 @@
 import { Request, Response } from 'express'
 import { TokenUseCase } from '../../application/usecases/TokenUseCase'
-import { CodedError } from '../../core/models/CodedError'
+import { CodedError } from '../../domain/models/CodedError'
 
 /**
  * TokenController class
@@ -8,7 +8,7 @@ import { CodedError } from '../../core/models/CodedError'
  * in the API.
  */
 export class TokenController {
-  private tokenUseCase: TokenUseCase
+  private readonly tokenUseCase: TokenUseCase
 
   /**
    * Constructor
@@ -51,7 +51,7 @@ export class TokenController {
   validateToken = async (req: Request, res: Response) => {
     const authHeader = req.headers.authorization
 
-    if (!authHeader || !authHeader.startsWith('Bearer ')) {
+    if (!authHeader?.startsWith('Bearer ')) {
       res.status(401).json({ message: 'Authorization header missing or malformed' })
       return
     }
@@ -82,7 +82,7 @@ export class TokenController {
   getData = async (req: Request, res: Response) => {
     const authHeader = req.headers.authorization
 
-    if (!authHeader || !authHeader.startsWith('Bearer ')) {
+    if (!authHeader?.startsWith('Bearer ')) {
       res.status(401).json({ message: 'Authorization header missing or malformed' })
       return
     }

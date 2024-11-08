@@ -6,7 +6,7 @@ export class TokenData {
    * The user ID.
    * @type {string}
    */
-  id: string
+  id?: string
   /**
    * The user email.
    * @type {string}
@@ -18,7 +18,7 @@ export class TokenData {
    * @param {string} id The user ID.
    * @param {string} email The user email.
    */
-  constructor(id: string, email: string) {
+  constructor(id: string | undefined, email: string) {
     this.id = id
     this.email = email
   }

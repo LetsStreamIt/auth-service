@@ -2,9 +2,9 @@ import chaiModule, { expect } from 'chai'
 import chaiHttp from 'chai-http'
 import sinon from 'sinon'
 import app from '../../src/app'
-import { User } from '../../src/core/models/User'
 import mongoose from 'mongoose'
 import { ProfileRepository } from '../../src/infrastructure/adapters/repositories/ProfileRepository'
+import { UserModel } from '../../src/infrastructure/adapters/mongoose/UserSchema'
 
 // Middleware to use chai-http
 const chai = chaiModule.use(chaiHttp)
@@ -24,11 +24,16 @@ describe('POST /api/auth/register', () => {
       username: 'testuser'
     }
 
+    const userDocument = {
+      ...fakeUser,
+      toObject: sinon.stub().returns(fakeUser)
+    }
+
     // Stub the User.findOne method to simulate a user with that email does not exist
-    sinon.stub(User, 'findOne').resolves(null)
+    sinon.stub(UserModel, 'findOne').resolves(null)
 
     // Stub the User.create method to simulate successful registration
-    sinon.stub(User, 'create').resolves(fakeUser as never)
+    sinon.stub(UserModel, 'create').resolves(userDocument as never)
 
     sinon.stub(ProfileRepository.prototype, 'createUserProfile').resolves()
 
@@ -49,8 +54,13 @@ describe('POST /api/auth/register', () => {
       username: 'existinguser'
     }
 
+    const userDocument = {
+      ...user,
+      toObject: sinon.stub().returns(user)
+    }
+
     // Stub the User.create method to simulate email already existing
-    sinon.stub(User, 'findOne').returns(user as never)
+    sinon.stub(UserModel, 'findOne').returns(userDocument as never)
 
     const res = await chai.request(app).post('/api/auth/register').send(user)
 
@@ -61,10 +71,10 @@ describe('POST /api/auth/register', () => {
 
   it('should return 400 when user data is wrong', async () => {
     // Stub the User.findOne method to simulate a user with that email does not exist
-    sinon.stub(User, 'findOne').resolves(null)
+    sinon.stub(UserModel, 'findOne').resolves(null)
 
     // Simulate an unexpected error
-    sinon.stub(User, 'create').returns(undefined as never)
+    sinon.stub(UserModel, 'create').returns(undefined as never)
 
     const res = await chai.request(app).post('/api/auth/register').send({
       email: 'unexpected@example.com'

@@ -1,4 +1,5 @@
-import { IAuthService } from '../../core/services/IAuthService'
+import { IAuthService } from '../../domain/services/IAuthService'
+import { PasswordUseCase } from './PasswordUseCase'
 
 /**
  * AuthUseCase
@@ -6,14 +7,16 @@ import { IAuthService } from '../../core/services/IAuthService'
  * AuthUseCase class that contains the use cases for the authentication
  */
 export class AuthUseCase {
-  private authService: IAuthService
+  private readonly authService: IAuthService
+  private readonly passwordUseCase: PasswordUseCase
 
   /**
    * AuthUseCase constructor
    * @param {IAuthService} authService - The authentication service
    */
-  constructor(authService: IAuthService) {
+  constructor(authService: IAuthService, passwordUseCase: PasswordUseCase) {
     this.authService = authService
+    this.passwordUseCase = passwordUseCase
   }
 
   /**
@@ -24,7 +27,8 @@ export class AuthUseCase {
    * @returns {Promise<Document>} The result of the registration
    */
   async register(email: string, password: string, username: string) {
-    return await this.authService.registerUser(email, password, username)
+    const hashedPassword = await this.passwordUseCase.hashPassword(password)
+    return this.authService.registerUser(email, hashedPassword, username)
   }
 
   /**
@@ -36,15 +40,16 @@ export class AuthUseCase {
    * @throws {CodedError} If the password is incorrect
    */
   async login(email: string, password: string) {
-    return await this.authService.loginUser(email, password)
+    const res = await this.authService.loginUser(email, password)
+    return res
   }
 
   /**
    * Delete a user
    * @param {string} email - The email of the user
-   * @returns {Promise<mongoose.mongo.DeleteResult>} The result of the deletion
+   * @returns {Promise<boolean>} The result of the deletion
    */
   async delete(email: string) {
-    return await this.authService.deleteUser(email)
+    return this.authService.deleteUser(email)
   }
 }

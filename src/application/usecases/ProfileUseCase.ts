@@ -1,4 +1,4 @@
-import { ProfileService } from '../../core/services/ProfileService'
+import { IProfileService } from '../../domain/services/IProfileService'
 
 /**
  * ProfileUseCase
@@ -6,13 +6,13 @@ import { ProfileService } from '../../core/services/ProfileService'
  * ProfileUseCase class that contains the use cases for the profile
  */
 export class ProfileUseCase {
-  private profileService: ProfileService
+  private readonly profileService: IProfileService
 
   /**
    * ProfileUseCase constructor
-   * @param {ProfileService} profileService - The profile service
+   * @param {IProfileService} profileService - The profile service
    */
-  constructor(profileService: ProfileService) {
+  constructor(profileService: IProfileService) {
     this.profileService = profileService
   }
 

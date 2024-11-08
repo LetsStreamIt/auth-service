@@ -1,5 +1,5 @@
-import { TokenData } from '../../core/models/TokenData'
-import { ITokenService } from '../../core/services/ITokenService'
+import { TokenData } from '../../domain/models/TokenData'
+import { ITokenService } from '../../domain/services/ITokenService'
 
 /**
  * TokenUseCase
@@ -7,7 +7,7 @@ import { ITokenService } from '../../core/services/ITokenService'
  * TokenUseCase class that contains the use cases for the token
  */
 export class TokenUseCase {
-  private tokenService: ITokenService
+  private readonly tokenService: ITokenService
 
   /**
    * TokenUseCase constructor

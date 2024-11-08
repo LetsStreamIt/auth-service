@@ -1,15 +1,15 @@
 import jwt from 'jsonwebtoken'
-import { ITokenService } from './ITokenService'
-import { CodedError } from '../models/CodedError'
-import { TokenData } from '../models/TokenData'
-import { standardConfig } from '../../config'
+import { ITokenService } from '../../../domain/services/ITokenService'
+import { standardConfig } from '../../../domain/config'
+import { CodedError } from '../../../domain/models/CodedError'
+import { TokenData } from '../../../domain/models/TokenData'
 
 /**
  * Token service
  * Implements the ITokenService interface
  */
 export class TokenService implements ITokenService {
-  private jwtSecret: string
+  private readonly jwtSecret: string
 
   constructor() {
     this.jwtSecret = standardConfig.JWT_SECRET
