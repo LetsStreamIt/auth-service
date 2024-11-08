@@ -6,7 +6,7 @@ import { IProfileService } from '../../domain/services/IProfileService'
  * ProfileUseCase class that contains the use cases for the profile
  */
 export class ProfileUseCase {
-  private profileService: IProfileService
+  private readonly profileService: IProfileService
 
   /**
    * ProfileUseCase constructor

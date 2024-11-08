@@ -7,7 +7,7 @@ import { ITokenService } from '../../domain/services/ITokenService'
  * TokenUseCase class that contains the use cases for the token
  */
 export class TokenUseCase {
-  private tokenService: ITokenService
+  private readonly tokenService: ITokenService
 
   /**
    * TokenUseCase constructor

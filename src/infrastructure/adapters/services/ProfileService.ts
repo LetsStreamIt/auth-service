@@ -2,7 +2,7 @@ import { ProfileRepository } from '../repositories/ProfileRepository'
 import { IProfileService } from '../../../domain/services/IProfileService'
 
 export class ProfileService implements IProfileService {
-  private profileRepository: ProfileRepository
+  private readonly profileRepository: ProfileRepository
 
   /**
    * ProfileService constructor

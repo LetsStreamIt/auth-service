@@ -9,7 +9,7 @@ import { TokenData } from '../../../domain/models/TokenData'
  * Implements the ITokenService interface
  */
 export class TokenService implements ITokenService {
-  private jwtSecret: string
+  private readonly jwtSecret: string
 
   constructor() {
     this.jwtSecret = standardConfig.JWT_SECRET

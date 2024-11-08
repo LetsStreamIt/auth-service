@@ -7,8 +7,8 @@ import { PasswordUseCase } from './PasswordUseCase'
  * AuthUseCase class that contains the use cases for the authentication
  */
 export class AuthUseCase {
-  private authService: IAuthService
-  private passwordUseCase: PasswordUseCase
+  private readonly authService: IAuthService
+  private readonly passwordUseCase: PasswordUseCase
 
   /**
    * AuthUseCase constructor

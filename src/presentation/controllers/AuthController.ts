@@ -21,9 +21,9 @@ import { IPasswordService } from '../../domain/services/IPasswordService'
  */
 export class AuthController {
   // Instantiate use case with repository and service
-  private authUseCase: AuthUseCase
-  private tokenUseCase: TokenUseCase
-  private profileUseCase: ProfileUseCase
+  private readonly authUseCase: AuthUseCase
+  private readonly tokenUseCase: TokenUseCase
+  private readonly profileUseCase: ProfileUseCase
 
   /**
    * Constructor

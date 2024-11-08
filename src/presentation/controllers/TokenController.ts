@@ -8,7 +8,7 @@ import { CodedError } from '../../domain/models/CodedError'
  * in the API.
  */
 export class TokenController {
-  private tokenUseCase: TokenUseCase
+  private readonly tokenUseCase: TokenUseCase
 
   /**
    * Constructor
