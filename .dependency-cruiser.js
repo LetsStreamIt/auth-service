@@ -21,7 +21,7 @@ module.exports = {
       },
       to: {
         pathNot:
-          '^(src/domain)|^(src/application)|^(node_modules/express)|^(node_modules/bcrypt)|^(node_modules/mongoose)|^(node_modules/axios)|^(node_modules/winston)|^(node_modules/jsonwebtoken)'
+          '^(src/domain)|^(src/application)'
       }
     },
     {
