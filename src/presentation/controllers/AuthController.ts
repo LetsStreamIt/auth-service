@@ -56,7 +56,7 @@ export class AuthController {
   registerUser = async (req: Request, res: Response) => {
     const { email, password, username } = req.body
     if (!email || !password || !username) {
-      logger.error('Invalid user data')
+      logger.info('Invalid user data')
       res.status(400).json({ message: 'Invalid user data' })
     }
     logger.info(`Registering user with email: ${email}`)
@@ -69,10 +69,10 @@ export class AuthController {
       res.status(201).json({ ...data, accessToken, refreshToken })
     } catch (error) {
       if (error instanceof CodedError) {
-        logger.error(error.message)
+        logger.info(error.message)
         res.status(error.code).json({ message: error.message })
       } else if (error instanceof Error) {
-        logger.error(error.message)
+        logger.info(error.message)
         res.status(400).json({ message: error.message })
       }
     }
@@ -87,7 +87,7 @@ export class AuthController {
   loginUser = async (req: Request, res: Response) => {
     const { email, password } = req.body
     if (!email || !password) {
-      logger.error('Invalid user data')
+      logger.info('Invalid user data')
       res.status(400).json({ message: 'Invalid user data' })
     }
     logger.info(`Logging in user with email: ${email}`)
@@ -100,10 +100,10 @@ export class AuthController {
       res.status(200).json({ ...data, accessToken, refreshToken })
     } catch (error) {
       if (error instanceof CodedError) {
-        logger.error(error.message)
+        logger.info(error.message)
         res.status(error.code).json({ message: error.message })
       } else if (error instanceof Error) {
-        logger.error(error.message)
+        logger.info(error.message)
         res.status(400).json({ message: error.message })
       }
     }

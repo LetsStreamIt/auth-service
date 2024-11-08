@@ -22,9 +22,6 @@ export class MongoUserRepository implements IUserRepository {
   async findUserByEmail(email: string) {
     logger.info(`Finding user with email: ${email}`)
     const user: UserDocument | null = await UserModel.findOne({ email })
-    logger.error('Helo from findUserByEmail')
-    logger.error(user)
-    logger.error(user?.toObject)
     return user ? user.toObject() : null
   }
 
