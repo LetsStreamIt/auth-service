@@ -1,7 +1,6 @@
 import { Request, Response } from 'express'
 import { AuthUseCase } from '../../application/usecases/AuthUseCase'
-import { AuthRepository } from '../../infrastructure/adapters/repositories/AuthRepository'
-import { AuthService } from '../../domain/services/AuthService'
+import { AuthService } from '../../infrastructure/adapters/services/AuthService'
 import { Error } from 'mongoose'
 import { CodedError } from '../../domain/models/CodedError'
 import { TokenUseCase } from '../../application/usecases/TokenUseCase'
@@ -10,6 +9,10 @@ import { ProfileRepository } from '../../infrastructure/adapters/repositories/Pr
 import { ProfileService } from '../../domain/services/ProfileService'
 import { ProfileUseCase } from '../../application/usecases/ProfileUseCase'
 import logger from '../../infrastructure/Logger'
+import { MongoUserRepository } from '../../infrastructure/adapters/mongoose/UserRepository'
+import { PasswordUseCase } from '../../application/usecases/PasswordUseCase'
+import { StandardPasswordService } from '../../infrastructure/adapters/services/PasswordService'
+import { IPasswordService } from '../../domain/services/IPasswordService'
 
 /**
  * AuthController class
@@ -28,12 +31,19 @@ export class AuthController {
    */
   constructor(tokenUseCase: TokenUseCase) {
     this.tokenUseCase = tokenUseCase
-    const authRepository = new AuthRepository()
+    const userRepository = new MongoUserRepository()
     const profileRepository = new ProfileRepository()
     const profileService = new ProfileService(profileRepository)
     this.profileUseCase = new ProfileUseCase(profileService)
-    const authService = new AuthService(authRepository, this.profileUseCase, this.tokenUseCase)
-    this.authUseCase = new AuthUseCase(authService)
+    const passwordService: IPasswordService = new StandardPasswordService()
+    const passwordUseCase = new PasswordUseCase(passwordService)
+    const authService = new AuthService(
+      userRepository,
+      this.profileUseCase,
+      this.tokenUseCase,
+      passwordUseCase
+    )
+    this.authUseCase = new AuthUseCase(authService, passwordUseCase)
     profileRepository.setAuthUseCase(this.authUseCase)
   }
 
@@ -83,7 +93,7 @@ export class AuthController {
     logger.info(`Logging in user with email: ${email}`)
     try {
       const user = await this.authUseCase.login(email, password)
-      const data = new TokenData(user.id, email)
+      const data = new TokenData(user?.id, email)
       const accessToken = await this.tokenUseCase.generate(data, '15m')
       const refreshToken = await this.tokenUseCase.generate(data, '24h')
       res.cookie('refreshToken', refreshToken, { httpOnly: true, sameSite: 'none', secure: true })

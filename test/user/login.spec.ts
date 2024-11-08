@@ -2,9 +2,10 @@ import chaiModule, { expect } from 'chai'
 import chaiHttp from 'chai-http'
 import sinon from 'sinon'
 import app from '../../src/app'
-import { User } from '../../src/domain/models/User'
 import bcrypt from 'bcrypt'
 import mongoose from 'mongoose'
+import { UserModel } from '../../src/infrastructure/adapters/mongoose/UserSchema'
+import { IUser } from '../../src/domain/models/User'
 
 // Middleware to use chai-http
 const chai = chaiModule.use(chaiHttp)
@@ -16,7 +17,8 @@ describe('a POST to /api/auth/login', () => {
   })
 
   it('should allow an existing user to login', async () => {
-    const fakeUser = {
+    const fakeUser: IUser = {
+      id: '123',
       email: 'test@example.com',
       password: 'password123'
     }
@@ -27,9 +29,11 @@ describe('a POST to /api/auth/login', () => {
     const hashedFakeUser = {
       ...fakeUser,
       password: hashedPwd,
-      matchPassword: sinon.stub().resolves(true)
+      toObject: sinon.stub().returns(fakeUser)
     }
-    sinon.stub(User, 'findOne').resolves(hashedFakeUser)
+
+    sinon.stub(UserModel, 'findOne').resolves(hashedFakeUser)
+    sinon.stub(bcrypt, 'compare').resolves(true)
 
     const res = await chai.request(app).post('/api/auth/login').send(fakeUser)
     expect(res).to.have.status(200)
@@ -46,7 +50,7 @@ describe('a POST to /api/auth/login', () => {
       password: 'password123'
     }
 
-    sinon.stub(User, 'findOne').resolves(null)
+    sinon.stub(UserModel, 'findOne').resolves(null)
     const res = await chai.request(app).post('/api/auth/login').send(nonExistingUser)
     expect(res).to.have.status(401)
     expect(res.body.message).to.equal('Invalid credentials')
@@ -58,7 +62,7 @@ describe('a POST to /api/auth/login', () => {
       email: 'test@example.com'
     }
 
-    sinon.stub(User, 'findOne').throws(new Error('data and hash arguments required'))
+    sinon.stub(UserModel, 'findOne').throws(new Error('data and hash arguments required'))
     const res = await chai.request(app).post('/api/auth/login').send(incorrectUser)
     expect(res).to.have.status(400)
     expect(res.body.message).to.equal('Invalid user data')

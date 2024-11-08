@@ -24,6 +24,6 @@ export class ProfileService {
    * @throws {CodedError} If the user profile could not be created
    */
   async createUserProfile(email: string, username: string, accessToken: string) {
-    return this.profileRepository.createUserProfile(email, username, accessToken)
+    return await this.profileRepository.createUserProfile(email, username, accessToken)
   }
 }

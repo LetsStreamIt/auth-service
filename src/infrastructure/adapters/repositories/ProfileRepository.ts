@@ -30,16 +30,20 @@ export class ProfileRepository {
       throw new Error('Auth use case not set')
     }
     const profileServiceUri = `http://${standardConfig.PROFILE_SERVICE_HOSTNAME}:${standardConfig.PROFILE_SERVICE_PORT}`
+    logger.info(profileServiceUri)
     const response = await axios.post(
       `${profileServiceUri}/users`,
       { email: email, username: username },
-      { headers: { Authorization: `Bearer ${accessToken}` } }
+      {
+        timeout: 5000,
+        headers: { Authorization: `Bearer ${accessToken}` }
+      }
     )
     if (response.status !== 201) {
       logger.error('Profile service error')
       logger.info(`Deleting user with email: ${email}`)
       const deleteResult = await this.authUseCase.delete(email)
-      if (deleteResult.deletedCount === 0) {
+      if (!deleteResult) {
         throw new Error('User deletion error')
       }
       throw new Error('Profile service error')
