@@ -68,7 +68,7 @@
     "typescript-eslint": "^8.0.0"
   },
   "engines": {
-    "node": "22.11"
+    "node": "22.12"
   },
   "dependencies": {
     "@types/winston": "^2.4.4",
